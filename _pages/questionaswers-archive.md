@@ -1,7 +1,7 @@
 ---
-title: ചോദ്യോത്തരങ്ങൾ
+title: Kubernetes
 layout: collection
-permalink: /questionaswers/
+permalink: /kubernetes/
 collection: questionaswers
 entries_layout: grid
 classes: wide

@@ -10,8 +10,8 @@ main:
     url: https://naadanmaavukal.in/
   - title: "മാവിനങ്ങൾ"
     url: /portfolio/
-  - title: "ചോദ്യോത്തരങ്ങൾ"
-    url: /questionaswers/
+  - title: "Kubernetes"
+    url: /kubernetes/
   - title: "പ്രജനനം"
     url: /propagation/
   - title: "Recipes"
