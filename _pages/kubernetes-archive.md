@@ -1,8 +1,8 @@
 ---
 title: Kubernetes
 layout: collection
-permalink: /kubernetes/
-collection: kubernetes
+permalink: /Kubernetes/
+collection: Kubernetes
 entries_layout: grid
 classes: wide
 ---

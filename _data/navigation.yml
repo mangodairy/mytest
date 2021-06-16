@@ -11,7 +11,7 @@ main:
   - title: "മാവിനങ്ങൾ"
     url: /portfolio/
   - title: "Kubernetes"
-    url: /kubernetes/
+    url: /Kubernetes/
   - title: "പ്രജനനം"
     url: /propagation/
   - title: "Recipes"
