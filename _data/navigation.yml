@@ -1,0 +1,18 @@
+# main links links
+main:
+  #- title: "About"
+  #  url: https://mmistakes.github.io/minimal-mistakes/about/
+  #- title: "Posts"
+  #  url: /year-archive/
+  #- title: "Collections"
+  #  url: /collection-archive/
+  - title: "Home"
+    url: https://naadanmaavukal.in/
+  - title: "മാവിനങ്ങൾ"
+    url: /portfolio/
+  - title: "ചോദ്യോത്തരങ്ങൾ"
+    url: /questionaswers/
+  - title: "പ്രജനനം"
+    url: /propagation/
+  - title: "Recipes"
+    url: /recipes/
