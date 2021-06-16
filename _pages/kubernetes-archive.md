@@ -2,7 +2,7 @@
 title: Kubernetes
 layout: collection
 permalink: /kubernetes/
-collection: questionaswers
+collection: kubernetes
 entries_layout: grid
 classes: wide
 ---
