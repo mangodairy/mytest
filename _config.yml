@@ -302,7 +302,7 @@ defaults:
       layout: single
       author_profile: true
       share: true
-  # _kubernetes
+  # _Kubernetes
   - scope:
       path: ""
       type: Kubernetes
