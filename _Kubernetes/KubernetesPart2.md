@@ -40,9 +40,12 @@ This figure gives you an illustration of Kubernetes architecture. It shows how a
 If you are interested to see the definition of each component please refer to the official documentation, for ease of access I have given the corresponding link.
 
 **To see what it is and how it is implemented in the k8s cluster we will go through each component.**
+{: style="text-align: justify;"}
+## We will Walk Through the Server
 
-## What is Kubernetes?
+We have a 3 node cluster, to list the master and associated worker node execute the command "**kubectl get nodes**".
 
+### List all the nodes in the cluster
 ```markdown
 rajith@k8s-master:~$ kubectl get nodes
 NAME         STATUS   ROLES                  AGE   VERSION
@@ -51,6 +54,18 @@ node-1       Ready    <none>                 15d   v1.21.1
 node-2       Ready    <none>                 15d   v1.21.1
 node-3       Ready    <none>                 15d   v1.21.1
 rajith@k8s-master:~$ 
+```
+### Display addresses of the master and services
+Use "**kubectl cluster-info**" command to display the addresses of the control plane and the cluster services. This will give an idea on which IP the API server bounded to and which port it is listening etc.
+
+```markdown
+rajith@k8s-master:~$ kubectl cluster-info
+Kubernetes control plane is running at https://192.168.50.10:6443
+CoreDNS is running at https://192.168.50.10:6443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+rajith@k8s-master:~$ 
+
 ```
 {: style="text-align: justify;"}
 
