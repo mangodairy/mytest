@@ -86,6 +86,12 @@ We had quick look at the server,now we will have a look at control-plane compone
 
 Ohh !!! We explained a lot !!!!!!!!!!!!  don't worry. I explained all these to make a simple command filtering combination to list only the control-plane components. All these concepts are discussed later in their own session. 
 
+We got all the required details to filter only the control-plane components. 
+We will make the command. It is ,
+
+**"kubectl get pods -n kube-system  |grep master"**
+
+Will execute on a server and see the result.
 
 ```markdown
 rajith@k8s-master:~$ kubectl get pods -n kube-system  |grep master
@@ -95,7 +101,14 @@ kube-controller-manager-k8s-master   1/1     Running   7          15d
 kube-scheduler-k8s-master            1/1     Running   7          15d
 rajith@k8s-master:~$ 
 ```
+Now go back and look at the name of the components we discussed and compare it with the above command output.
 
+* [kube-apiserver](https://kubernetes.io/docs/concepts/overview/components/#kube-apiserver)
+* [etcd](https://kubernetes.io/docs/concepts/overview/components/#etcd)
+* [kube-scheduler](https://kubernetes.io/docs/concepts/overview/components/#kube-scheduler)
+* [kube-controller-manager](https://kubernetes.io/docs/concepts/overview/components/#kube-controller-manager)
+
+Ya it is same , we can see all the control-plane components are running on master node under the namespace kube-system. Thats what we explained with the eight points :) . 
 
 {: style="text-align: justify;"}
 
