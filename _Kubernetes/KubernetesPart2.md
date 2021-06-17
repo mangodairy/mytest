@@ -20,7 +20,6 @@ toc_label: " "
 toc_icon: "Introduction to Kubernetes"
 toc_sticky: true
 ---
-This is for testing to see this comes under the header ........................
 
 ## Kubernetes Architecture
 This figure gives you an illustration of Kubernetes architecture. It shows how a Kubernetes cluster with all the components tied together.
@@ -39,11 +38,20 @@ This figure gives you an illustration of Kubernetes architecture. It shows how a
 * [kube-controller-manager](https://kubernetes.io/docs/concepts/overview/components/#kube-controller-manager)
 
 If you are interested to see the definition of each component please refer to the official documentation, for ease of access I have given the corresponding link.
+
 **To see what it is and how it is implemented in the k8s cluster we will go through each component.**
 
 ## What is Kubernetes?
 
-It is a container orchestration tool, hope you are already familiar with docker if not, please have some basic understanding of docker before getting into the Kubernetes. Like Kubernetes we have  Mesos and docker swarm which can act similar to a Kubernetes cluster, the word cluster is not the right fit here, for ease of understanding I am using the word cluster however the right fit is container orchestrator.
+```markdown
+rajith@k8s-master:~$ kubectl get nodes
+NAME         STATUS   ROLES                  AGE   VERSION
+k8s-master   Ready    control-plane,master   15d   v1.21.1
+node-1       Ready    <none>                 15d   v1.21.1
+node-2       Ready    <none>                 15d   v1.21.1
+node-3       Ready    <none>                 15d   v1.21.1
+rajith@k8s-master:~$ 
+```
 {: style="text-align: justify;"}
 
 ## Why Kubernetes?
