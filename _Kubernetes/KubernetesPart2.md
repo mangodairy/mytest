@@ -44,7 +44,6 @@ If you are interested to see the definition of each component please refer to th
 ## We will Walk Through the Server
 
 We have a 3 node cluster, to list the master and associated worker node execute the command "**kubectl get nodes**".
-
 ### List all the nodes in the cluster
 ```markdown
 rajith@k8s-master:~$ kubectl get nodes
@@ -55,6 +54,7 @@ node-2       Ready    <none>                 15d   v1.21.1
 node-3       Ready    <none>                 15d   v1.21.1
 rajith@k8s-master:~$ 
 ```
+
 
 Use "**kubectl cluster-info**" command to display the addresses of the control plane and the cluster services. This will give an idea on which IP the API server bounded to and which port it is listening etc.
 ### Display addresses of the master and services
