@@ -67,6 +67,36 @@ To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 rajith@k8s-master:~$ 
 
 ```
+
+
+### List the Control Plane Components
+
+We had quick look at the server,now we will have a look at control-plane components. 
+
+**Before that, we will understand a few concepts and commands.**
+
+* The command 'kubectl get pods' display the pods running on a k8s cluster.
+* The Kubernetes environment is further isolated with a concept called a namespace. We will have a detailed study on it later.
+* The objects running on a particular namespace can be listed with -n < namespace > along with the suitable commands.
+* The control-plane components are running as a pod in the master node.
+* There is a concept called static pods.
+* The control-plane components making use of this method to start.
+* The static pod will be suffixed with the node name in which they started.
+* The control plane components are placed under the namespace called 'kube-system' .
+
+Ohh !!! We explained a lot !!!!!!!!!!!!  don't worry. I explained all these to make a simple command filtering combination to list only the control-plane components. All these concepts are discussed later in their own session. 
+
+
+```markdown
+rajith@k8s-master:~$ kubectl get pods -n kube-system  |grep master
+etcd-k8s-master                      1/1     Running   7          15d
+kube-apiserver-k8s-master            1/1     Running   7          15d
+kube-controller-manager-k8s-master   1/1     Running   7          15d
+kube-scheduler-k8s-master            1/1     Running   7          15d
+rajith@k8s-master:~$ 
+```
+
+
 {: style="text-align: justify;"}
 
 ## Why Kubernetes?
