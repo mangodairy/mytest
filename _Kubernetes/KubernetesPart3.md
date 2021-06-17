@@ -43,64 +43,49 @@ If you are interested to see the definition of each component please refer to th
 {: style="text-align: justify;"}
 ## We will Walk Through the Server
 
-We have a 3 node cluster, to list the master and associated worker node execute the command "**kubectl get nodes**".
-### List all the nodes in the cluster
-```markdown
-rajith@k8s-master:~$ kubectl get nodes
-NAME         STATUS   ROLES                  AGE   VERSION
-k8s-master   Ready    control-plane,master   15d   v1.21.1
-node-1       Ready    <none>                 15d   v1.21.1
-node-2       Ready    <none>                 15d   v1.21.1
-node-3       Ready    <none>                 15d   v1.21.1
-rajith@k8s-master:~$ 
-```
-
-
-Use "**kubectl cluster-info**" command to display the addresses of the control plane and the cluster services. This will give an idea on which IP the API server bounded to and which port it is listening etc.
-### Display addresses of the master and services
-```markdown
-rajith@k8s-master:~$ kubectl cluster-info
-Kubernetes control plane is running at https://192.168.50.10:6443
-CoreDNS is running at https://192.168.50.10:6443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
-
-To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
-rajith@k8s-master:~$ 
-
-```
-
-
 ### List the Control Plane Components
 
-We had quick look at the server,now we will have a look at control-plane components. 
+In the previous chapter, before filtering the master node components we went through a few concepts and commands hope you remember those point if not, [please refresh it.  ](https://mangodairy.github.io/mytest/Kubernetes/KubernetesPart2/#list-the-control-plane-components)
 
-**Before that, we will understand a few concepts and commands.**
+**If you remeber those points we will add few more points here to understand it better**
 
-* The command 'kubectl get pods' display the pods running on a k8s cluster.
-* The Kubernetes environment is further isolated with a concept called a namespace. We will have a detailed study on it later.
-* The objects running on a particular namespace can be listed with -n < namespace > along with the suitable commands.
-* The control-plane components are running as a pod in the master node.
-* There is a concept called static pods.
-* The control-plane components making use of this method to start.
-* The static pod will be suffixed with the node name in which they started.
-* The control plane components are placed under the namespace called 'kube-system' .
+* Like pod, there is another 'kind' available in k8s called daemonset.
+* It can be listed with the command  "kubectl get daemonsets".
+* There is an option available with the get command that is "-o wide " with the help of it we will get more details of the given command.
 
-Ohh !!! We explained a lot !!!!!!!!!!!!  don't worry. I explained all these to make a simple command filtering combination to list only the control-plane components. All these concepts are discussed later in their own session. 
+### [kube-proxy](https://kubernetes.io/docs/concepts/overview/components/#kube-proxy)
 
-We got all the required details to filter only the control-plane components. 
+kube-proxy is a network proxy that runs on each cluster node including the master node, each node will have one set of kube-proxy running on it. This is achieved through daemonset which will discuss later in detail. Since it is maintained with the help of daemonset if we add additional nodes to the cluster we no need to deploy the kube-proxy on that node daemonset will take care of it and add a new pod in the node.
+
+Now we have the required details to filter only the kube-proxy from the cluster. 
 We will make the command. It is ,
 
 **kubectl get pods -n kube-system  |grep master**
 
-Will execute on a server and see the result.
+Will execute it on a server and see the result.
 
+{: style="text-align: justify;"}
 ```markdown
-rajith@k8s-master:~$ kubectl get pods -n kube-system  |grep master
-etcd-k8s-master                      1/1     Running   7          15d
-kube-apiserver-k8s-master            1/1     Running   7          15d
-kube-controller-manager-k8s-master   1/1     Running   7          15d
-kube-scheduler-k8s-master            1/1     Running   7          15d
+rajith@k8s-master:~$ kubectl get pods -n kube-system  |grep kube-proxy
+kube-proxy-86f72                     1/1     Running   8          16d
+kube-proxy-lpvws                     1/1     Running   7          16d
+kube-proxy-n9phj                     1/1     Running   7          16d
+kube-proxy-vkdvx                     1/1     Running   7          16d
+```
+In the command output you can see there are four kube-proxy runnings on this cluster, it is a four-node cluster including the master node. But how we will see the pods are distributed across the nodes?
+
+You remember we were discussing an option "-o wide" we will try it with the above command to see how the output will look like.
+```markdown
+rajith@k8s-master:~$ kubectl get pods -n kube-system -o wide  |grep kube-proxy
+kube-proxy-86f72                     1/1     Running   8          16d   192.168.50.11   node-1       <none>           <none>
+kube-proxy-lpvws                     1/1     Running   7          16d   192.168.50.13   node-3       <none>           <none>
+kube-proxy-n9phj                     1/1     Running   7          16d   192.168.50.12   node-2       <none>           <none>
+kube-proxy-vkdvx                     1/1     Running   7          16d   192.168.50.10   k8s-master   <none>           <none>
 rajith@k8s-master:~$ 
 ```
+See the 7th and 8th column you can see the server IP address and the hostname respectively. Please have a close look then you will notice that each kube-proxy pod is running on each node of the cluster. That is what we discussed sometime back.
+{: style="text-align: justify;"}
+
 Now go back and look at the name of the components we discussed and compare it with the above command output.
 
 * [kube-apiserver](https://kubernetes.io/docs/concepts/overview/components/#kube-apiserver)
