@@ -17,7 +17,6 @@ tags:
   - table of contents
 toc: true
 toc_label: " "
-toc_icon: "Linux Installation"
 toc_sticky: true
 ---
 
@@ -97,6 +96,7 @@ Under “/boot” we are not going to keep any data or software packages, the on
 The old kernel will be used only if there is an issue in the application or if the OS becomes unstable after the patching. In that case, we will be reverting the kernel to the previous version. In these cases, we need only the previous kernel. Therefore no need of increasing the size of this partition beyond a limit.
 </p>
 {: .notice--info}
+{: style="text-align: justify;"}
 
 <div markdown="0"><a href="#" class="btn btn--success">Go back to the Top of the page </a></div>
 
