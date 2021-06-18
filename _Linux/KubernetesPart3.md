@@ -36,6 +36,7 @@ Before jumping into any technology or anything in the world, these are the commo
 Definitely not. In very simple words, Linux is an operating system like Windows or Mac on desktop computers, It is a powerful OS which is having all and lots of extra capability compared to other business-class UNIX flavours like HP-Unix, Sun Solaris ( now oracle Solaris ), AIX etc on the server platform.
 {: style="text-align: justify;"}
 Many of you may not be knowing that the **android phone in your hand is a small variant of Linux. Yes, it is a customized Linux distribution developed by Google.** There are lots of embedded Linux systems running on routers, firewall not only in the IT field but also in your home.
+{: .notice--success}
 {: style="text-align: justify;"}
 In my home! Where? Well, We will explain this in our 'Where is Linux" section.
 {: style="text-align: justify;"}
