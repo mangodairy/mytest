@@ -121,7 +121,36 @@ rajith@node-1:/$
 This is a Linux command, the warning shows because I am running it as a noon-root user. Ignore it for now.
 
 
+### [kubelet](https://kubernetes.io/docs/concepts/overview/components/#kubelet)
 
+The container runtime is the software that is responsible for running containers. Kubernetes supports several container runtimes like Docker,containerd,CRI-O etc. In my current setup I am using docker as container runtime. Like, kubelet docker also running a Linux service. Let’s have a look at it.
+
+```yaml
+root@node-1:~# systemctl status docker
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+     Active: active (running) since Fri 2021-06-18 02:22:32 UTC; 43min ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 711 (dockerd)
+      Tasks: 45
+     Memory: 147.4M
+     CGroup: /system.slice/docker.service
+             └─711 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+Jun 18 02:22:31 node-1 dockerd[711]: time="2021-06-18T02:22:31.330389076Z" level=info msg="Removing stale sandbox c33554adc2ded4e6e5c2a6fd4176e3c0e452d80c9890f05abd618fd37917b48e (d5ede5c9fa3b8dead09c31>
+Jun 18 02:22:31 node-1 dockerd[711]: time="2021-06-18T02:22:31.348166166Z" level=warning msg="Error (Unable to complete atomic operation, key modified) deleting object [endpoint 26bacfffb1e7aa18137470eb>
+Jun 18 02:22:31 node-1 dockerd[711]: time="2021-06-18T02:22:31.400646592Z" level=info msg="Default bridge (docker0) is assigned with an IP address 172.17.0.0/16. Daemon option --bip can be used to set a>
+Jun 18 02:22:31 node-1 dockerd[711]: time="2021-06-18T02:22:31.514334977Z" level=info msg="Loading containers: done."
+Jun 18 02:22:31 node-1 dockerd[711]: time="2021-06-18T02:22:31.913785532Z" level=info msg="Docker daemon" commit=8728dd2 graphdriver(s)=overlay2 version=20.10.6
+Jun 18 02:22:31 node-1 dockerd[711]: time="2021-06-18T02:22:31.917075618Z" level=info msg="Daemon has completed initialization"
+Jun 18 02:22:32 node-1 systemd[1]: Started Docker Application Container Engine.
+Jun 18 02:22:32 node-1 dockerd[711]: time="2021-06-18T02:22:32.012748800Z" level=info msg="API listen on /run/docker.sock"
+Jun 18 02:22:43 node-1 dockerd[711]: time="2021-06-18T02:22:43.962407443Z" level=info msg="ignoring event" container=4e04444cb20e992e6ecf041ed433c8816f26ffa088a66d97f61b1d5752d13db3 module=libcontainerd>
+Jun 18 02:23:08 node-1 dockerd[711]: time="2021-06-18T02:23:08.525253826Z" level=warning msg="Your kernel does not support swap limit capabilities or the cgroup is not mounted. Memory limited without sw>
+root@node-1:~#
+```
+Now I ran this command as the root user, you can see the previous warning has gone and lots of other message and warning came, at this stage, we are not much worried about those messages and warnings.
 {: style="text-align: justify;"}
 
 
