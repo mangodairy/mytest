@@ -4,6 +4,7 @@ header:
   overlay_color: "#80aaff              "
   teaser: /assets/images/kuberneties/IntroductiontoKubernetes.png
   excerpt: "Linux Installation?"
+  tagline: "Testing the header "
   show_date: true
 sidebar:
   - title: "Linux Installation"
