@@ -3,7 +3,7 @@ title: "Introduction to Linux"
 header:
   overlay_color: "#80aaff              "
   teaser: /assets/images/kuberneties/IntroductiontoKubernetes.png
-  excerpt: "What, why, where, when and how is Linux?????? "
+  excerpt: "What, why, where, when and how is Linux???"
   show_date: true
 sidebar:
   - title: "Introduction to Linux"
@@ -21,7 +21,7 @@ toc_icon: "Introduction to Kubernetes"
 toc_sticky: true
 ---
 
-## What, why, where, when and how is Linux?????? 
+## What, why, where, when and how is Linux???
 Before jumping into any technology or anything in the world, these are the common questions comes to our mind or in another word this should be the logical approach for anything and everything.
 
 **Note:** If you are already familiar with Linux, please skip this chapter. Here we are not discussing anything about the commands or technology.
