@@ -185,7 +185,7 @@ If you still require a screenshot of the installation I will provide few links f
 <p>
 But I strongly recommend you to be clear in the above concept which will make a difference in your administration or at least you will know why a server is configured like......... in your environment? Or you can suggest a better configuration and layout.
 </p>
-{: .notice--warning}
+{: .notice--info}
 {: style="text-align: justify;"}
 
 So we will wind up here and will cover more on the Security and hardening series.
