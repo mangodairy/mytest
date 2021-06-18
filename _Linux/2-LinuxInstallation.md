@@ -44,8 +44,10 @@ Most of the new commerce prefer to install it from OS CD. So will go through the
 
 **Note:**  Considering you are using a brand new machine or there is no data in your existing system. If this is not the case take the backup of the data before starting the installation. There are options to install Linux by keeping the data untouched however, it is difficult to understand a person who is very new to Linux.
 {: .notice--warning}
+{: style="text-align: justify;"}
 
 Hardware setup, Make sure your BIOS selection is made to boot the system from CD/DVD. Depends on the BIOS manufacturer the option to enter into BIOS may change, the most common method are pressing “DEL” or F2 key, during the time of system boot. It displays the key to being pressed to enter into the BIOS screen.
+{: style="text-align: justify;"}
  ----------------BIOS screenshots-------------------
  
 * Insert the bootable installation media into the drive and start the system. 
@@ -61,6 +63,16 @@ Hardware setup, Make sure your BIOS selection is made to boot the system from CD
    * Providing the administrative user( root ) password and optionally an additional user.
    * Providing grub password or skipping it.
    * Package or package group selection.
+{: style="text-align: justify;"}
+
+<p>
+These are the most common installation task for an admin.
+
+Linux OS installation is clicking next → Next → again next ......... and finish :); as simple as that of a windows desktop installation. 
+
+All the latest Linux distributions provide these options. Anyone can do this; no administrative knowledge is needed. 
+{: .notice--success}
+</p>
 
 <div markdown="0"><a href="#" class="btn btn--success">Go back to the Top of the page </a></div>
 
