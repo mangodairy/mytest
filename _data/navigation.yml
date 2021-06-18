@@ -3,3 +3,5 @@ main:
   - title: "Kubernetes"
     url: /Kubernetes/
 
+  - title: "Linux"
+    url: /Linux/
