@@ -82,11 +82,32 @@ You can prefer Linux any time like when you are going for desktop or server/data
 ## How Linux?
 
 In the entire series, we are going to discuss “How Linux”.
-How to install?
-How to configure _______ server ?
-How to solve ______ ?
+* How to install?
+* How to configure _______ server ?
+* How to solve ______ ?
 So “how” we will discuss on remaining part of this series.
+{: style="text-align: justify;"}
 
+## Categorizing Linux desktop and Server.
+
+### The desktop version.
+We have many Linux variant for Desktop; Ubuntu Linux is one of the main players on the desktop.
+{: style="text-align: justify;"}
+### Server version.
+There is no server desktop category in Linux, it depends on the packages installed and the way you used them.Then why all the Linux admin says “Red hat”, Suse, Centos etc are the server versions? Because Red hat or Suse is providing technical support for their OS.
+{: style="text-align: justify;"}
+Registered users get the support of the technical issue as well as bug fixes and security patches. This is not like support from an open form or a mailing group. Depends on your subscription they will have service level agreements for response and resolution.
+{: .notice--success}
+{: style="text-align: justify;"}
+
+Another important point about enterprise distribution; the vendor test most of the security issue and stability of the kernel, packages etc before introducing it to their enterprise distribution.
+For example, Fedora is the open-source community project for Red hat Enterprise Linux. You can see most of the advanced features will be introduced in Fedora quickly but the same will not be available in Redhat at the same pace.Before implementing any new feature or application in Enterprise distribution  Red Hat performs the stability and security test.
+{: .notice--warning}
+{: style="text-align: justify;"}
+
+It is better to stop the introduction part. If I continue the discussion most of you will lose interest and go for some other OS ☺.
+{: .notice--danger}
+{: style="text-align: justify;"}
 
 
 <div markdown="0"><a href="#" class="btn btn--success">Go back to the Top of the page </a></div>
