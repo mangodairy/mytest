@@ -71,8 +71,10 @@ These are the most common installation task for an admin.
 Linux OS installation is clicking next → Next → again next ......... and finish :); as simple as that of a windows desktop installation. 
 
 All the latest Linux distributions provide these options. Anyone can do this; no administrative knowledge is needed. 
-{: .notice--success}
 </p>
+{: .notice--success}
+
+**But are we here to do that?**
 
 <div markdown="0"><a href="#" class="btn btn--success">Go back to the Top of the page </a></div>
 
