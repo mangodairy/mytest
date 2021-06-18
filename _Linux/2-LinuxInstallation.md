@@ -47,6 +47,20 @@ Most of the new commerce prefer to install it from OS CD. So will go through the
 
 Hardware setup, Make sure your BIOS selection is made to boot the system from CD/DVD. Depends on the BIOS manufacturer the option to enter into BIOS may change, the most common method are pressing “DEL” or F2 key, during the time of system boot. It displays the key to being pressed to enter into the BIOS screen.
  ----------------BIOS screenshots-------------------
+ 
+* Insert the bootable installation media into the drive and start the system. 
+* Once the POST(Hardware verification processes )is completed, its search for the bootable media and boot from the media. 
+* Till this almost all X86 based OS to boot the same order, now start the Linux part of it.
+* Linux installation, setting up the OS.
+* Irrespective of the distribution and installation methods, our part is,
+   * Deciding the hard disk partition,
+   * selecting the filesystem and its size.
+   * Keyboard/ Terminal selection.
+   * Setting the Date and time, enabling or disabling Daylight saving.
+   * Time zone selection.
+   * Providing the administrative user( root ) password and optionally an additional user.
+   * Providing grub password or skipping it.
+   * Package or package group selection.
 
 <div markdown="0"><a href="#" class="btn btn--success">Go back to the Top of the page </a></div>
 
