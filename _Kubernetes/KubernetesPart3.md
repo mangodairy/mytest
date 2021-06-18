@@ -60,7 +60,7 @@ kube-proxy is a network proxy that runs on each cluster node including the maste
 Now we have the required details to filter only the kube-proxy from the cluster. 
 We will make the command. It is ,
 
-**kubectl get pods -n kube-system  |grep master**
+*"kubectl get pods -n kube-system  |grep master"*
 
 Will execute it on a server and see the result.
 
@@ -101,12 +101,6 @@ You can see that there are two 'daemonset' out of which one is 'kube-proxy' that
 
 Now go back and look at the name of the components we discussed and compare it with the above command output.
 
-* [kube-apiserver](https://kubernetes.io/docs/concepts/overview/components/#kube-apiserver)
-* [etcd](https://kubernetes.io/docs/concepts/overview/components/#etcd)
-* [kube-scheduler](https://kubernetes.io/docs/concepts/overview/components/#kube-scheduler)
-* [kube-controller-manager](https://kubernetes.io/docs/concepts/overview/components/#kube-controller-manager)
-
-Ya it is same , we can see all the control-plane components are running on master node under the namespace kube-system. Thats what we explained with the eight points :) . 
 
 {: style="text-align: justify;"}
 
