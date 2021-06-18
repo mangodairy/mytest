@@ -104,8 +104,10 @@ The old kernel will be used only if there is an issue in the application or if t
 ### Plan for "/home" and "/var".
 We will go through few other filesystems like “/home”, “/var”.
 > When “/home” partition is into consideration we should understand the purpose of the server.If it is a file server or any other application in which the user is going to place lots of files under the user home directory. Then you need to think of a bigger “/home” and you can choose 100 or 500Gb or more.
+{: style="text-align: justify;"}
 
 > If a large-sized filesystem is expected or the filesystem is expected to have high reads/write then it is recommended to keeps the filesystem in SAN or NAS with an appropriate RAID level. The SAN and NAS devices are designed to handle high I/O also filesystem expansion is easy. This helps in faster backup and restoration.
+{: style="text-align: justify;"}
 
 > “/var” is a variable filesystem. In any system, there will be lots of log records, therefore, it is good to keep a separate “/var/log” and also keep periodic log rotation. Same way if it is a web server keep  "/var/www/html" ( or its Document root path ) as a separate partition.
 {: style="text-align: justify;"}
@@ -140,6 +142,28 @@ Most of the section will not give any issues and the default will be okay.
 
 * Time zone, if you are building a server for the Australian region and you selected the US time zone you are almost be going a day behind.
 * Daylight saving, in most of the western countries the time depends on the sunlight availability they adjust the clock one hour ahead or behind for few months. So if you are selecting the correct time zone/country etc then the system will automatically adjust the time during the time of daylight saving.
+
+## Package Selection
+
+Some Linux distribution shows “Web server”, “mail-server “, “Samba “ etc at the time of installation or you will get an option to select the packages. 
+What is wrong with installing everything?
+{: style="text-align: justify;"}
+
+We will list out some of the most common issues.
+{: style="text-align: justify;"}
+
+> If you install extra packages it needs more space, there is no use in keeping an NFS server package on a web server if it is not acting as an NFS server other than eating up space from the system hard disk.
+{: style="text-align: justify;"}
+
+> If the service is configured in autostart, it takes some memory and CPU, there is no use in running an FTP or NIS service in a web server and consuming its resources. This memory and processing can be utilized for fastening Web service request.
+{: style="text-align: justify;"}
+
+> If the server is configured as a web server we will be doing the security and fine-tuning required for HTTP and port level security blocking etc for a web server. If FTP service is unnecessarily running on a web server and if it has any vulnerabilities then the attack will come through FTP, why unnecessarily exposing our servers to attack by keeping unwanted services?
+{: style="text-align: justify;"}
+
+> Some of the services will create some service account which an attacker may be well aware of; they will try to penetrate the server through that service account, even if there is no successful login the server needs to respond to each request.
+{: style="text-align: justify;"}
+
 
 <div markdown="0"><a href="#" class="btn btn--success">Go back to the Top of the page </a></div>
 
