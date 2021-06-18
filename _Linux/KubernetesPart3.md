@@ -39,8 +39,12 @@ Many of you may not be knowing that the **android phone in your hand is a small 
 {: style="text-align: justify;"}
 In my home! Where? Well, We will explain this in our 'Where is Linux" section.
 {: style="text-align: justify;"}
-## We will Walk Through the Server
+## Why Linux?
 
+Why did you want to go for Linux or What is the advantage of Linux over other operating systems?
+{: style="text-align: justify;"}
+Linux is an Open Source Software → If you are a developer you will get the source code of it. And do the customization as per your requirements. If you are going to develop an application on Linux, then you can understand exactly how the base OS is working and tune the application to work smoothly. Also, OS can be tuned as per the application requirements. This is not so easy in other operating systems. Since you do not have the source code of it. 
+{: style="text-align: justify;"}
 ### List the Worker Node Components
 
 In the previous chapter, before filtering the master node components we went through a few concepts and commands hope you remember those points if not, [please refresh it.  ](https://mangodairy.github.io/mytest/Kubernetes/KubernetesPart2/#list-the-control-plane-components)
