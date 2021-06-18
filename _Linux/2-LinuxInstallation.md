@@ -81,10 +81,22 @@ All the latest Linux distributions provide these options. Anyone can do this; no
 Instead of  placing some screenshots of installation I prefer discussing,
  
    * What is important in each step, and why it is required? 
-   * What is the significance of it during the production run? 
+   * What is the significance of it during the production run?
+    
 This part may be boring for you but try to understand it. This helps you in each stage of your admin career from L0, L1, L2, L3, SME or Architect or even if your path is to become a manager, you will not become a dump manager just shaking your head for all your admin's comments or you can avoid foolish questions by understanding these concepts.
 {: style="text-align: justify;"} 
 
+## Hard-disk partitioning and filesystem selection
+
+### Plan for "/boot" partition.
+
+Under /boot we have only **grub, kernel and "initramfs"** so we don't need much space over here. Till RHEL 5 it is recommended to have 100Mb size, for RHEL 6 200Mb or maximum 500Mb, even if you have 1TB hard disk there is no need of giving huge  “/boot” partition.
+
+<p>
+Under “/boot” we are not going to keep any data or software packages, the only changes happening here is at the time of kernel install or update. By default, if you are using yum utility it keeps only 3 recent kernels and the corresponding  "initramfs". each may come up to 20 to 25Mb so you need a maximum size of 80Mb.
+The old kernel will be used only if there is an issue in the application or if the OS becomes unstable after the patching. In that case, we will be reverting the kernel to the previous version. In these cases, we need only the previous kernel. Therefore no need of increasing the size of this partition beyond a limit.
+</p>
+{: .notice--info}
 
 <div markdown="0"><a href="#" class="btn btn--success">Go back to the Top of the page </a></div>
 
