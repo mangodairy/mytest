@@ -128,6 +128,19 @@ Consider you configured “/var” as a directory under “/ “ filesystem and 
 **Another important scenario:** The chance of filesystem corruption is high for the filesystems with high I/O. If you keep this partition within the "/" filesystem along with the affected directory,  the root "/" filesystem also will get corrupted. If the root filesystem is corrupted the only option to bring back the system is a fresh installation. If it was a separate filesystem fix the filesystem issue or recreate the filesystem and restore the data from backup which will be much easier than making the server from the scratch.
 {: .notice--warning}
 {: style="text-align: justify;"}
+
+The same is applicable for all the filesystem. Here I am not going through each filesystem.
+{: style="text-align: justify;"}
+
+## Keyboard and terminal selection
+
+Most of the section will not give any issues and the default will be okay.
+
+## Time, time zone daylight saving.
+
+* Time zone, if you are building a server for the Australian region and you selected the US time zone you are almost be going a day behind.
+* Daylight saving, in most of the western countries the time depends on the sunlight availability they adjust the clock one hour ahead or behind for few months. So if you are selecting the correct time zone/country etc then the system will automatically adjust the time during the time of daylight saving.
+
 <div markdown="0"><a href="#" class="btn btn--success">Go back to the Top of the page </a></div>
 
 
