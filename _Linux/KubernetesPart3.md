@@ -74,6 +74,19 @@ It is everywhere, on your home appliances, car, traffic controllers, factories e
 Machines use embedded Linux, it is a customized Linux for the lightweight appliance, only very little storage, memory, and processing power is sufficient for its operation. That is the reason it is easily integrated into our home appliances like remote control, the same embedded Linux is used in industries to automate the work also in IT equipment like routers, firewall, SAN and NAS storages.
 {: style="text-align: justify;"}
 
+## When Linux?
+
+You can prefer Linux any time like when you are going for desktop or server/datacenter implementation or while hosting a website you can choose Linux or in the cloud. There is no specific answer for this, if you have any query please let me know.
+{: style="text-align: justify;"}
+
+## How Linux?
+
+In the entire series, we are going to discuss “How Linux”.
+How to install?
+How to configure _______ server ?
+How to solve ______ ?
+So “how” we will discuss on remaining part of this series.
+
 
 
 <div markdown="0"><a href="#" class="btn btn--success">Go back to the Top of the page </a></div>
