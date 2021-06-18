@@ -104,7 +104,9 @@ The old kernel will be used only if there is an issue in the application or if t
 ### Plan for "/home" and "/var".
 We will go through few other filesystems like “/home”, “/var”.
 > When “/home” partition is into consideration we should understand the purpose of the server.If it is a file server or any other application in which the user is going to place lots of files under the user home directory. Then you need to think of a bigger “/home” and you can choose 100 or 500Gb or more.
+
 > If a large-sized filesystem is expected or the filesystem is expected to have high reads/write then it is recommended to keeps the filesystem in SAN or NAS with an appropriate RAID level. The SAN and NAS devices are designed to handle high I/O also filesystem expansion is easy. This helps in faster backup and restoration.
+
 > “/var” is a variable filesystem. In any system, there will be lots of log records, therefore, it is good to keep a separate “/var/log” and also keep periodic log rotation. Same way if it is a web server keep  "/var/www/html" ( or its Document root path ) as a separate partition.
 {: style="text-align: justify;"}
 
