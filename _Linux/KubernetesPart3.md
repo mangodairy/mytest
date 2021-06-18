@@ -3,7 +3,7 @@ title: "Introduction to Linux"
 header:
   overlay_color: "#80aaff              "
   teaser: /assets/images/kuberneties/IntroductiontoKubernetes.png
-  excerpt: "What, why, where, when and how is Linux???"
+  excerpt: "What, why, where, when and how is Linux?"
   show_date: true
 sidebar:
   - title: "Introduction to Linux"
@@ -21,23 +21,20 @@ toc_icon: "Introduction to Kubernetes"
 toc_sticky: true
 ---
 
-## What, why, where, when and how is Linux???
+## What, why, where, when and how is Linux?
 Before jumping into any technology or anything in the world, these are the common questions comes to our mind or in another word this should be the logical approach for anything and everything.
 
 **Note:** If you are already familiar with Linux, please skip this chapter. Here we are not discussing anything about the commands or technology.
 {: .notice--info}
 {: style="text-align: justify;"}
 
- ## Worker Node Components
+## What is Linux?
 
-* [kubelet](https://kubernetes.io/docs/concepts/overview/components/#kubelet)
-* [kube-proxy](https://kubernetes.io/docs/concepts/overview/components/#kube-proxy)
-* [Container runtime](https://kubernetes.io/docs/concepts/overview/components/#container-runtime)
+"It is a black screen with lots of commands. Leave it. We will go for Windows or Mac." This is the common comment about Linux who does not know the beauty of it. I heard this from many of my friends and colleges. But is it true?
+Definitely not. In very simple words, Linux is an operating system like Windows or Mac on desktop computers, It is a powerful OS which is having all and lots of extra capability compared to other business-class UNIX flavours like HP-Unix, Sun Solaris ( now oracle Solaris ), AIX etc on the server platform.
+Many of you may not be knowing that the **android phone in your hand is a small variant of Linux. Yes, it is a customized Linux distribution developed by Google.** There are lots of embedded Linux systems running on routers, firewall not only in the IT field but also in your home.
 
-If you are interested to see the definition of each component please refer to the official documentation, for ease of access I have given the corresponding link.
-
-**To see what it is and how it is implemented in the k8s cluster we will go through each component.**
-{: style="text-align: justify;"}
+In my home! Where? Well, We will explain this in our 'Where is Linux" section.
 ## We will Walk Through the Server
 
 ### List the Worker Node Components
