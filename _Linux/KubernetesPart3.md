@@ -55,7 +55,6 @@ Everyone tells that Linux is multiuser and multitasking. However, we can not tel
 {: style="text-align: justify;"}
 
 ### Support and related information.
-
 You have lots of open forum to discuss and get the solution. Or if you need vendor support there are some distribution providing paid support Like Redhat, Suse, Ubuntu etc.
 There are lots of other reasons like plenty of supported application availability, no vendor lock, etc. Again it all depends on many factors like requirements, cost, support etc.
 Anyway, we decided to go with Linux then again why we need to concentrate more on "Why"? It is our personal choice :). Better we will concentrate more on "how". Maybe we will come back to "why" but not here. Why some service or setting is not working as per our expectations.
@@ -63,7 +62,6 @@ One more question from me :).
 {: .notice--primary}
 {: style="text-align: justify;"}
 ### Which distribution of Linux are you going to use?
-
 It depends on your usage and the level of support you need like criticality, business needs etc. Yes, it depends on your personal choice too. In companies, it also depends on the company policies and the cost involved in it. We will come back to our first series of question.
 {: .notice--primary}
 {: style="text-align: justify;"}
