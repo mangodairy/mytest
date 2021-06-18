@@ -124,9 +124,8 @@ Consider you configured “/var” as a directory under “/ “ filesystem and 
 </p>
 {: .notice--warning}
 {: style="text-align: justify;"}
-<p>
+
 **Another important scenario:** The chance of filesystem corruption is high for the filesystems with high I/O. If you keep this partition within the "/" filesystem along with the affected directory,  the root "/" filesystem also will get corrupted. If the root filesystem is corrupted the only option to bring back the system is a fresh installation. If it was a separate filesystem fix the filesystem issue or recreate the filesystem and restore the data from backup which will be much easier than making the server from the scratch.
-</p>
 {: .notice--warning}
 {: style="text-align: justify;"}
 <div markdown="0"><a href="#" class="btn btn--success">Go back to the Top of the page </a></div>
