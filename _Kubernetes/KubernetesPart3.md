@@ -121,7 +121,7 @@ rajith@node-1:/$
 This is a Linux command, the warning shows because I am running it as a noon-root user. Ignore it for now.
 
 
-### [kubelet](https://kubernetes.io/docs/concepts/overview/components/#kubelet)
+### [Container runtime](https://kubernetes.io/docs/concepts/overview/components/#container-runtime)
 
 The container runtime is the software that is responsible for running containers. Kubernetes supports several container runtimes like Docker,containerd,CRI-O etc. In my current setup I am using docker as container runtime. Like, kubelet docker also running a Linux service. Let’s have a look at it.
 
