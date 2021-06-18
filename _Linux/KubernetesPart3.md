@@ -66,6 +66,12 @@ It depends on your usage and the level of support you need like criticality, bus
 {: .notice--primary}
 {: style="text-align: justify;"}
 
+## Where is Linux?
+
+Where can you find a Linux system?
+It is everywhere, on your home appliances, car, traffic controllers, factories etc. In almost all light and heavy machines and even in ship and satellites.Sorry  ☺  yes in your computers, laptop, servers, routers firewall and yes in your mobile handsets too.
+{: style="text-align: justify;"}
+Machines use embedded Linux, it is a customized Linux for the lightweight appliance, only very little storage, memory, and processing power is sufficient for its operation. That is the reason it is easily integrated into our home appliances like remote control, the same embedded Linux is used in industries to automate the work also in IT equipment like routers, firewall, SAN and NAS storages.
 {: style="text-align: justify;"}
 
 
