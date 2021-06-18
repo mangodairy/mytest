@@ -165,6 +165,14 @@ We will list out some of the most common issues.
 {: style="text-align: justify;"}
 
 
+**Once all the above steps are completed, it will ask for the root password and grub password at the time of installation. Then it will take some time to copy the package and configure the system and it will go for a reboot.**
+
+If you clearly understand the above steps you can go for any Linux installation irrespective of the distribution and version. Even the different types of installation like Kickstart and ask method needs a clear understanding of the above concept.
+{: .notice--success}
+{: style="text-align: justify;"}
+
+If you still require a screenshot of the installation I will provide few links for few distributions.
+
 <div markdown="0"><a href="#" class="btn btn--success">Go back to the Top of the page </a></div>
 
 
