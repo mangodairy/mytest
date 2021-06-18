@@ -3,7 +3,7 @@ title: Linux
 layout: collection
 permalink: /Linux/
 collection: Linux
-entries_layout: grid
+entries_layout: collection
 classes: wide
 ---
 
