@@ -95,13 +95,13 @@ kube-proxy   4         4         4       4            4           kubernetes.io/
 weave-net    4         4         4       4            4           <none>                   16d
 rajith@k8s-master:~$ 
 ```
-You can see that there are two 'daemonset' out of which one is 'kube-proxy' that's what we are looking for. The other one 'weave-net' we will discuss shortly.
+You can see that there are two 'daemonset' out of which one is 'kube-proxy' that's what we are looking for. The other one 'weave-net' we will discuss it shortly.
 
 ### [kubelet](https://kubernetes.io/docs/concepts/overview/components/#kubelet)
 
-Kubeletis an agent that runs on each node in the cluster. It makes sure that containers are running. Unlike other components, kubelet is running as a service in each server. Let's have a look at it.
+Kubelet is an agent that runs on each node in the cluster. It makes sure that containers are running. Unlike other components, kubelet is running as a service in each server. Let's have a look at it.
 
-```markdown
+```yaml
 rajith@node-1:/$ systemctl status kubelet 
 ● kubelet.service - kubelet: The Kubernetes Node Agent
      Loaded: loaded (/lib/systemd/system/kubelet.service; enabled; vendor preset: enabled)
