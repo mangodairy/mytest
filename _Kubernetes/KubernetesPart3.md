@@ -43,11 +43,11 @@ If you are interested to see the definition of each component please refer to th
 {: style="text-align: justify;"}
 ## We will Walk Through the Server
 
-### List the Control Plane Components
+### List the Worker Node Components
 
-In the previous chapter, before filtering the master node components we went through a few concepts and commands hope you remember those point if not, [please refresh it.  ](https://mangodairy.github.io/mytest/Kubernetes/KubernetesPart2/#list-the-control-plane-components)
+In the previous chapter, before filtering the master node components we went through a few concepts and commands hope you remember those points if not, [please refresh it.  ](https://mangodairy.github.io/mytest/Kubernetes/KubernetesPart2/#list-the-control-plane-components)
 
-**If you remeber those points we will add few more points here to understand it better**
+**If you remeber those points we will add few more points here to understand it better.**
 
 * Like pod, there is another 'kind' available in k8s called daemonset.
 * It can be listed with the command  "kubectl get daemonsets".
@@ -83,7 +83,20 @@ kube-proxy-n9phj                     1/1     Running   7          16d   192.168.
 kube-proxy-vkdvx                     1/1     Running   7          16d   192.168.50.10   k8s-master   <none>           <none>
 rajith@k8s-master:~$ 
 ```
-See the 7th and 8th column you can see the server IP address and the hostname respectively. Please have a close look then you will notice that each kube-proxy pod is running on each node of the cluster. That is what we discussed sometime back.
+See the 7th and 8th column you can see the server IP address and the hostname respectively. Please have a close look, you will notice that each kube-proxy pod is running on each node of the cluster. That is what we discussed sometime back.
+
+But with the above command we listed only pod then what is 'daemonset'? . These pods are created with the help of a 'daemonset' we will see that.
+We will execute the command which we discussed as the second point. *"kubectl get daemonsets"*
+
+```markdown
+rajith@k8s-master:~$ kubectl get daemonsets -n kube-system 
+NAME         DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR            AGE
+kube-proxy   4         4         4       4            4           kubernetes.io/os=linux   16d
+weave-net    4         4         4       4            4           <none>                   16d
+rajith@k8s-master:~$ 
+```
+You can see that there are two 'daemonset' out of which one is 'kube-proxy' that's what we are looking for. The other one 'weave-net' we will discuss shortly.
+
 {: style="text-align: justify;"}
 
 Now go back and look at the name of the components we discussed and compare it with the above command output.
