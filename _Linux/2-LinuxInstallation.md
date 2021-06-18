@@ -1,35 +1,42 @@
 ---
-title: "Introduction to Linux"
+title: "Linux Installation"
 header:
   overlay_color: "#80aaff              "
   teaser: /assets/images/kuberneties/IntroductiontoKubernetes.png
-  excerpt: "What, why, where, when and how is Linux?"
+  excerpt: "Linux Installation?"
   show_date: true
 sidebar:
-  - title: "Introduction to Linux"
+  - title: "Linux Installation"
     image: /assets/images/kuberneties/KubernetesSidebar.png
     image_alt: "logo"
     text: "Written by"
   - title: "Rajith P"
-    text: "Introduction to Linux"
+    text: "Linux Installation"
 
 tags:
   - table of contents
 toc: true
 toc_label: " "
-toc_icon: "Introduction to Kubernetes"
+toc_icon: "Linux Installation"
 toc_sticky: true
 ---
 
-## What, why, where, when and how is Linux?
-Before jumping into any technology or anything in the world, these are the common questions comes to our mind or in another word this should be the logical approach for anything and everything.
-
-**Note:** If you are already familiar with Linux, please skip this chapter. Here we are not discussing anything about the commands or technology.
-{: .notice--info}
+## Installation
+If you are clear with the structure of the computer ( Both OS and hardware ) then the installation is a simple process;  even if you are using a new version of Linux. Else each distribution and version to version will look different to you.
 {: style="text-align: justify;"}
 
-## What is Linux?
+## Different types of Linux installation
 
+1 Installation through bootable media
+2 Kickstart, unattended installation.
+3 Linux asks method.
+
+Each installation methods have a graphical and text mode.
+
+All these methods and options make us confused. Before we go depth into installation clearly understand; the concept behind it.
+
+Most of the new commerce prefer to install it from OS CD. So will go through the steps involved in it. Nowadays instead of using CD as bootable media, we make bootable Pendrive and install it from there or if it a virtual machine we will make use of the ISO image still the concept remains the same. 
+---------------------------------
 "It is a black screen with lots of commands. Leave it. We will go for Windows or Mac." This is the common comment about Linux who does not know the beauty of it. I heard this from many of my friends and colleges. But is it true?
 {: style="text-align: justify;"}
 
