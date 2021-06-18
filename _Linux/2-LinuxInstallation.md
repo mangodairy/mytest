@@ -2,14 +2,11 @@
 title: "Linux Installation"
 header:
   overlay_color: "#80aaff              "
-  teaser: /assets/images/kuberneties/IntroductiontoKubernetes.png
-  excerpt: "Linux Installation?"
+  excerpt: "Linux Installation"
   show_overlay_excerpt: false
   show_date: true
 sidebar:
   - title: "Linux Installation"
-    image: /assets/images/kuberneties/KubernetesSidebar.png
-    image_alt: "logo"
     text: "Written by"
   - title: "Rajith P"
     text: "Linux Installation"
@@ -171,17 +168,18 @@ If you clearly understand the above steps you can go for any Linux installation 
 {: .notice--success}
 {: style="text-align: justify;"}
 
-If you still require a screenshot of the installation I will provide few links for few distributions.
+If you still require a screenshot of the installation I will provide few links.
 
-* [See the ubuntu desktop installation step, click here](https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview)
+* [To see the ubuntu desktop installation step, click here](https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview)
 
-* [See the step to Create a bootable USB stick on Ubuntu](https://ubuntu.com/tutorials/create-a-usb-stick-on-ubuntu#1-overview)
+* [To see the step to Create a bootable USB stick on Ubuntu](https://ubuntu.com/tutorials/create-a-usb-stick-on-ubuntu#1-overview)
 
-* [See the step to Create a Create a bootable USB stick on Windows](https://ubuntu.com/tutorials/create-a-usb-stick-on-windows#1-overview)
+* [To See the step to Create a Create a bootable USB stick on Windows](https://ubuntu.com/tutorials/create-a-usb-stick-on-windows#1-overview)
 
 * [Installation Guide CentOS](https://docs.centos.org/en-US/centos/install-guide/Simple_Installation/)
 
 * [RHEL 8 Bare Metal Quick Install](https://developers.redhat.com/rhel8/install-rhel8#installation)
+{: style="text-align: justify;"}
 <p>
 But I strongly recommend you to be clear in the above concept which will make a difference in your administration or at least you will know why a server is configured like......... in your environment? Or you can suggest a better configuration and layout.
 </p>
