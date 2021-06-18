@@ -44,116 +44,30 @@ In my home! Where? Well, We will explain this in our 'Where is Linux" section.
 
 Why did you want to go for Linux or What is the advantage of Linux over other operating systems?
 {: style="text-align: justify;"}
-Linux is an Open Source Software → If you are a developer you will get the source code of it. And do the customization as per your requirements. If you are going to develop an application on Linux, then you can understand exactly how the base OS is working and tune the application to work smoothly. Also, OS can be tuned as per the application requirements. This is not so easy in other operating systems. Since you do not have the source code of it. 
+Linux is an Open Source Software. If you are a developer you will get the source code of it. And do the customization as per your requirements. If you are going to develop an application on Linux, then you can understand exactly how the base OS is working and tune the application to work smoothly. Also, OS can be tuned as per the application requirements. This is not so easy in other operating systems. Since you do not have the source code of it. 
 {: style="text-align: justify;"}
-### List the Worker Node Components
 
-In the previous chapter, before filtering the master node components we went through a few concepts and commands hope you remember those points if not, [please refresh it.  ](https://mangodairy.github.io/mytest/Kubernetes/KubernetesPart2/#list-the-control-plane-components)
 
-**If you remeber those points we will add few more points here to understand it better.**
-
-* Like pod, there is another 'kind' available in k8s called daemonset.
-* It can be listed with the command  "kubectl get daemonsets".
-* There is an option available with the get command that is "-o wide " with the help of it we will get more details of the given command.
-
-### [kube-proxy](https://kubernetes.io/docs/concepts/overview/components/#kube-proxy)
-
-kube-proxy is a network proxy that runs on each cluster node including the master node, each node will have one set of kube-proxy running on it. This is achieved through daemonset which will discuss later in detail. Since it is maintained with the help of daemonset if we add additional nodes to the cluster we no need to deploy the kube-proxy on that node daemonset will take care of it and add a new pod in the node.
-
-Now we have the required details to filter only the kube-proxy from the cluster. 
-We will make the command. It is ,
-
-*"kubectl get pods -n kube-system  |grep master"*
-
-Will execute it on a server and see the result.
-
+It supports most of the modern hardware from the Lower-end desktop, Laptop or even your mobile and palmtops to higher-end servers like Power series. You can select the hardware depends on your budget and requirements. Other Unix flavours like HP Unix, AIX, Solaris (Solaris have an X86 version but it will not support all the features of the Sparc version) etc. It needs its own hardware to work.
 {: style="text-align: justify;"}
-```markdown
-rajith@k8s-master:~$ kubectl get pods -n kube-system  |grep kube-proxy
-kube-proxy-86f72                     1/1     Running   8          16d
-kube-proxy-lpvws                     1/1     Running   7          16d
-kube-proxy-n9phj                     1/1     Running   7          16d
-kube-proxy-vkdvx                     1/1     Running   7          16d
-```
-In the command output you can see there are four kube-proxy runnings on this cluster, it is a four-node cluster including the master node. But how we will see the pods are distributed across the nodes?
+Everyone tells that Linux is multiuser and multitasking. However, we can not tell it is a differentiating feature since it is available in almost all modern Operating systems.
+{: .notice--warning}
+{: style="text-align: justify;"}
 
-You remember we were discussing an option "-o wide" we will try it with the above command to see how the output will look like.
-```markdown
-rajith@k8s-master:~$ kubectl get pods -n kube-system -o wide  |grep kube-proxy
-kube-proxy-86f72                     1/1     Running   8          16d   192.168.50.11   node-1       <none>           <none>
-kube-proxy-lpvws                     1/1     Running   7          16d   192.168.50.13   node-3       <none>           <none>
-kube-proxy-n9phj                     1/1     Running   7          16d   192.168.50.12   node-2       <none>           <none>
-kube-proxy-vkdvx                     1/1     Running   7          16d   192.168.50.10   k8s-master   <none>           <none>
-rajith@k8s-master:~$ 
-```
-See the 7th and 8th column you can see the server IP address and the hostname respectively. Please have a close look, you will notice that each kube-proxy pod is running on each node of the cluster. That is what we discussed sometime back.
+### Support and related information.
 
-But with the above command we listed only pod then what is 'daemonset'? . These pods are created with the help of a 'daemonset' we will see that.
-We will execute the command which we discussed as the second point. *"kubectl get daemonsets"*
+You have lots of open forum to discuss and get the solution. Or if you need vendor support there are some distribution providing paid support Like Redhat, Suse, Ubuntu etc.
+There are lots of other reasons like plenty of supported application availability, no vendor lock, etc. Again it all depends on many factors like requirements, cost, support etc.
+Anyway, we decided to go with Linux then again why we need to concentrate more on "Why"? It is our personal choice :). Better we will concentrate more on "how". Maybe we will come back to "why" but not here. Why some service or setting is not working as per our expectations.
+One more question from me :).
+{: .notice--primary}
+{: style="text-align: justify;"}
+### Which distribution of Linux are you going to use?
 
-```markdown
-rajith@k8s-master:~$ kubectl get daemonsets -n kube-system 
-NAME         DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR            AGE
-kube-proxy   4         4         4       4            4           kubernetes.io/os=linux   16d
-weave-net    4         4         4       4            4           <none>                   16d
-rajith@k8s-master:~$ 
-```
-You can see that there are two 'daemonset' out of which one is 'kube-proxy' that's what we are looking for. The other one 'weave-net' we will discuss it shortly.
+It depends on your usage and the level of support you need like criticality, business needs etc. Yes, it depends on your personal choice too. In companies, it also depends on the company policies and the cost involved in it. We will come back to our first series of question.
+{: .notice--primary}
+{: style="text-align: justify;"}
 
-### [kubelet](https://kubernetes.io/docs/concepts/overview/components/#kubelet)
-
-Kubelet is an agent that runs on each node in the cluster. It makes sure that containers are running. Unlike other components, kubelet is running as a service in each server. Let's have a look at it.
-
-```yaml
-rajith@node-1:/$ systemctl status kubelet 
-● kubelet.service - kubelet: The Kubernetes Node Agent
-     Loaded: loaded (/lib/systemd/system/kubelet.service; enabled; vendor preset: enabled)
-    Drop-In: /etc/systemd/system/kubelet.service.d
-             └─10-kubeadm.conf
-     Active: active (running) since Fri 2021-06-18 02:22:22 UTC; 18min ago
-       Docs: https://kubernetes.io/docs/home/
-   Main PID: 643 (kubelet)
-      Tasks: 15 (limit: 1072)
-     Memory: 101.7M
-     CGroup: /system.slice/kubelet.service
-             └─643 /usr/bin/kubelet --bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf --kubeconfig=/etc/kubernetes/kubelet.conf --config=/var/lib/kubelet/config.yaml --network-plugin=cni --p>
-
-Warning: some journal files were not opened due to insufficient permissions.
-rajith@node-1:/$
-```
-This is a Linux command, the warning shows because I am running it as a noon-root user. Ignore it for now.
-
-
-### [Container runtime](https://kubernetes.io/docs/concepts/overview/components/#container-runtime)
-
-The container runtime is the software that is responsible for running containers. Kubernetes supports several container runtimes like Docker,containerd,CRI-O etc. In my current setup I am using docker as container runtime. Like, kubelet docker also running a Linux service. Let’s have a look at it.
-
-```yaml
-root@node-1:~# systemctl status docker
-● docker.service - Docker Application Container Engine
-     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
-     Active: active (running) since Fri 2021-06-18 02:22:32 UTC; 43min ago
-TriggeredBy: ● docker.socket
-       Docs: https://docs.docker.com
-   Main PID: 711 (dockerd)
-      Tasks: 45
-     Memory: 147.4M
-     CGroup: /system.slice/docker.service
-             └─711 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
-
-Jun 18 02:22:31 node-1 dockerd[711]: time="2021-06-18T02:22:31.330389076Z" level=info msg="Removing stale sandbox c33554adc2ded4e6e5c2a6fd4176e3c0e452d80c9890f05abd618fd37917b48e (d5ede5c9fa3b8dead09c31>
-Jun 18 02:22:31 node-1 dockerd[711]: time="2021-06-18T02:22:31.348166166Z" level=warning msg="Error (Unable to complete atomic operation, key modified) deleting object [endpoint 26bacfffb1e7aa18137470eb>
-Jun 18 02:22:31 node-1 dockerd[711]: time="2021-06-18T02:22:31.400646592Z" level=info msg="Default bridge (docker0) is assigned with an IP address 172.17.0.0/16. Daemon option --bip can be used to set a>
-Jun 18 02:22:31 node-1 dockerd[711]: time="2021-06-18T02:22:31.514334977Z" level=info msg="Loading containers: done."
-Jun 18 02:22:31 node-1 dockerd[711]: time="2021-06-18T02:22:31.913785532Z" level=info msg="Docker daemon" commit=8728dd2 graphdriver(s)=overlay2 version=20.10.6
-Jun 18 02:22:31 node-1 dockerd[711]: time="2021-06-18T02:22:31.917075618Z" level=info msg="Daemon has completed initialization"
-Jun 18 02:22:32 node-1 systemd[1]: Started Docker Application Container Engine.
-Jun 18 02:22:32 node-1 dockerd[711]: time="2021-06-18T02:22:32.012748800Z" level=info msg="API listen on /run/docker.sock"
-Jun 18 02:22:43 node-1 dockerd[711]: time="2021-06-18T02:22:43.962407443Z" level=info msg="ignoring event" container=4e04444cb20e992e6ecf041ed433c8816f26ffa088a66d97f61b1d5752d13db3 module=libcontainerd>
-Jun 18 02:23:08 node-1 dockerd[711]: time="2021-06-18T02:23:08.525253826Z" level=warning msg="Your kernel does not support swap limit capabilities or the cgroup is not mounted. Memory limited without sw>
-root@node-1:~#
-```
-Now I ran this command as the root user, you can see the previous warning has gone and lots of other message and warning came, at this stage, we are not much worried about those messages and warnings.
 {: style="text-align: justify;"}
 
 
