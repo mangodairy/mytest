@@ -1,17 +1,17 @@
 ---
-title: "Kubernetes  Architecture Worker Node Components"
+title: "Introduction to Linux"
 header:
   overlay_color: "#80aaff              "
   teaser: /assets/images/kuberneties/IntroductiontoKubernetes.png
-  excerpt: "Kubernetes  Architecture Worker Node Components."
+  excerpt: "What, why, where, when and how is Linux?????? "
   show_date: true
 sidebar:
-  - title: "Introduction to Kubernetes"
+  - title: "Introduction to Linux"
     image: /assets/images/kuberneties/KubernetesSidebar.png
     image_alt: "logo"
     text: "Written by"
   - title: "Rajith P"
-    text: "Introduction to Kubernetes"
+    text: "Introduction to Linux"
 
 tags:
   - table of contents
@@ -21,17 +21,14 @@ toc_icon: "Introduction to Kubernetes"
 toc_sticky: true
 ---
 
-## Kubernetes Architecture
-This figure gives you an illustration of Kubernetes architecture. It shows how a Kubernetes cluster with all the components tied together.
-In the previous chapter, we went through the [control-plane components.](https://mangodairy.github.io/mytest/Kubernetes/KubernetesPart2/) In this chapter, let's go through the worker node components.
+## What, why, where, when and how is Linux?????? 
+Before jumping into any technology or anything in the world, these are the common questions comes to our mind or in another word this should be the logical approach for anything and everything.
+
+**Note:** If you are already familiar with Linux, please skip this chapter. Here we are not discussing anything about the commands or technology.
+{: .notice--info}
 {: style="text-align: justify;"}
 
-<figure>
-	<a href="https://d33wubrfki0l68.cloudfront.net/2475489eaf20163ec0f54ddc1d92aa8d4c87c96b/e7c81/images/docs/components-of-kubernetes.svg"><img src="https://d33wubrfki0l68.cloudfront.net/2475489eaf20163ec0f54ddc1d92aa8d4c87c96b/e7c81/images/docs/components-of-kubernetes.svg"></a>
-	<figcaption><a href="https://kubernetes.io/docs/concepts/overview/components/" title="Kubernetes Architecture, on kubernetes.io">Kubernetes Architecture, from kubernetes.io</a>.</figcaption>
-</figure>
-
-## Worker Node Components
+ ## Worker Node Components
 
 * [kubelet](https://kubernetes.io/docs/concepts/overview/components/#kubelet)
 * [kube-proxy](https://kubernetes.io/docs/concepts/overview/components/#kube-proxy)
