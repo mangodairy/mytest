@@ -2,14 +2,11 @@
 title: "Introduction to Linux"
 header:
   overlay_color: "#80aaff              "
-  teaser: /assets/images/kuberneties/IntroductiontoKubernetes.png
   excerpt: "What, why, where, when and how is Linux?"
   show_overlay_excerpt: false
   show_date: true
 sidebar:
   - title: "Introduction to Linux"
-    image: /assets/images/kuberneties/KubernetesSidebar.png
-    image_alt: "logo"
     text: "Written by"
   - title: "Rajith P"
     text: "Introduction to Linux"
