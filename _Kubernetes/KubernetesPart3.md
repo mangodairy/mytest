@@ -97,9 +97,29 @@ rajith@k8s-master:~$
 ```
 You can see that there are two 'daemonset' out of which one is 'kube-proxy' that's what we are looking for. The other one 'weave-net' we will discuss shortly.
 
-{: style="text-align: justify;"}
+### [kubelet](https://kubernetes.io/docs/concepts/overview/components/#kubelet)
 
-Now go back and look at the name of the components we discussed and compare it with the above command output.
+Kubeletis an agent that runs on each node in the cluster. It makes sure that containers are running. Unlike other components, kubelet is running as a service in each server. Let's have a look at it.
+
+```markdown
+rajith@node-1:/$ systemctl status kubelet 
+● kubelet.service - kubelet: The Kubernetes Node Agent
+     Loaded: loaded (/lib/systemd/system/kubelet.service; enabled; vendor preset: enabled)
+    Drop-In: /etc/systemd/system/kubelet.service.d
+             └─10-kubeadm.conf
+     Active: active (running) since Fri 2021-06-18 02:22:22 UTC; 18min ago
+       Docs: https://kubernetes.io/docs/home/
+   Main PID: 643 (kubelet)
+      Tasks: 15 (limit: 1072)
+     Memory: 101.7M
+     CGroup: /system.slice/kubelet.service
+             └─643 /usr/bin/kubelet --bootstrap-kubeconfig=/etc/kubernetes/bootstrap-kubelet.conf --kubeconfig=/etc/kubernetes/kubelet.conf --config=/var/lib/kubelet/config.yaml --network-plugin=cni --p>
+
+Warning: some journal files were not opened due to insufficient permissions.
+rajith@node-1:/$
+```
+This is a Linux command, the warning shows because I am running it as a noon-root user. Ignore it for now.
+
 
 
 {: style="text-align: justify;"}
