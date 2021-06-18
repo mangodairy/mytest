@@ -1,6 +1,5 @@
 ---
 title: "Linux Installation"
-layout: post
 header:
   overlay_color: "#80aaff              "
   teaser: /assets/images/kuberneties/IntroductiontoKubernetes.png
