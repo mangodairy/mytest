@@ -101,6 +101,32 @@ The old kernel will be used only if there is an issue in the application or if t
 {: .notice--info}
 {: style="text-align: justify;"}
 
+### Plan for "/home" and "/var".
+We will go through few other filesystems like “/home”, “/var”.
+> When “/home” partition is into consideration we should understand the purpose of the server.If it is a file server or any other application in which the user is going to place lots of files under the user home directory. Then you need to think of a bigger “/home” and you can choose 100 or 500Gb or more.
+> If a large-sized filesystem is expected or the filesystem is expected to have high reads/write then it is recommended to keeps the filesystem in SAN or NAS with an appropriate RAID level. The SAN and NAS devices are designed to handle high I/O also filesystem expansion is easy. This helps in faster backup and restoration.
+> “/var” is a variable filesystem. In any system, there will be lots of log records, therefore, it is good to keep a separate “/var/log” and also keep periodic log rotation. Same way if it is a web server keep  "/var/www/html" ( or its Document root path ) as a separate partition.
+{: style="text-align: justify;"}
+
+
+## Discussion on the need for a separate filesystem.
+
+I know most of you are going to ask if it is not configured like this will it not work?
+                    Or
+I have a setup that was not configured in this manner still is working perfectly for the last XX years.
+
+I am not saying this will not work or another configuration is wrong, however, this would be one of the recommended ways. Because it will be easy to manage and easy in case of disaster recovery also the chance of system breakdown will be less compared to the other configuration.
+
+<p>
+Consider you configured “/var” as a directory under “/ “ filesystem and it has become 100% full because of exponential growth in the system or application logs. In this situation, even the root user itself find it difficult to get into the system to compress the logs. Or you may end up taking the system to single-user mode to recover the system back to normal condition. If it was configured as a separate filesystem, it will not occupy the space under the root filesystem, it would be within "/var/log filesystem", still the root user can easily log in to the system and do the log rotation or copy the log file to some other partition and nullifying the logs.
+</p>
+{: .notice--warning}
+{: style="text-align: justify;"}
+<p>
+**Another important scenario:** The chance of filesystem corruption is high for the filesystems with high I/O. If you keep this partition within the "/" filesystem along with the affected directory,  the root "/" filesystem also will get corrupted. If the root filesystem is corrupted the only option to bring back the system is a fresh installation. If it was a separate filesystem fix the filesystem issue or recreate the filesystem and restore the data from backup which will be much easier than making the server from the scratch.
+</p>
+{: .notice--warning}
+{: style="text-align: justify;"}
 <div markdown="0"><a href="#" class="btn btn--success">Go back to the Top of the page </a></div>
 
 
