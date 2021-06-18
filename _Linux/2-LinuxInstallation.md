@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Linux Installation"
 header:
   overlay_color: "#80aaff              "
