@@ -76,6 +76,16 @@ All the latest Linux distributions provide these options. Anyone can do this; no
 
 **But are we here to do that?**
 
+## Enterprise-level Server Installation and Configuration.
+
+Instead of  placing some screenshots of installation I prefer discussing,
+ 
+   * What is important in each step, and why it is required? 
+   * What is the significance of it during the production run? 
+This part may be boring for you but try to understand it. This helps you in each stage of your admin career from L0, L1, L2, L3, SME or Architect or even if your path is to become a manager, you will not become a dump manager just shaking your head for all your admin's comments or you can avoid foolish questions by understanding these concepts.
+{: style="text-align: justify;"} 
+
+
 <div markdown="0"><a href="#" class="btn btn--success">Go back to the Top of the page </a></div>
 
 
