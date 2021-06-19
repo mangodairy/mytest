@@ -40,7 +40,6 @@ It is,
 *	k    8         s
 *	k8s
 {: style="text-align: left;"}
-
 ## Prerequisite to start Kubernetes?
 
 When you are looking into Kubernetes from an infrastructure perspective you should have a basic understanding of the below-listed items. Without the basic knowledge of this, your journey will be difficult.
