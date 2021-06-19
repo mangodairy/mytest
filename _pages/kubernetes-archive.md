@@ -6,7 +6,8 @@ collection: Kubernetes
 entries_layout: grid
 classes: wide
 ---
-## Kubernetes
+## Kubernetes in 7 days? In a week !!!
+
 
 Kubernetes in 7 days( Seven modules, if you do not have time in your day to day work spent 10 minutes going through it so that you will get a basic understanding of Kubernetes in a week time ). The Kubernetes is well documented in [kubernetes.io web site ](https://kubernetes.io/) but it is a little difficult for a beginner to get through that documentation. I tried my level best to simplify the concept.
 {: style="text-align: justify;"}
