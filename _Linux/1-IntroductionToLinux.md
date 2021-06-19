@@ -1,5 +1,6 @@
 ---
 title: "Introduction to Linux"
+excerpt: "We will try to understand Linux from a layman's view."
 header:
   overlay_color: "#80aaff              "
   excerpt: "What, why, where, when and how is Linux?"
