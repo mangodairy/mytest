@@ -8,5 +8,13 @@ classes: wide
 ---
 ## Kubernetes
 
-This is Kubernetes introductory series, we will cover the basic concept of Kubernetes in 7 days( Seven modules so if you do not have time in your day to day work spent 10 minutes going through it so that you will get a basic understanding of Kubernetes in a week time.  The Kubernetes is well documented in [kubernetes.io web site ](https://kubernetes.io/) but it is a little difficult for a beginner to get through that documentation. Initially, I found it difficult to understand the Kubernetes concept and it was a little difficult to walk through the documentation. I tried my level best to simplify the concept. 
+Kubernetes in 7 days( Seven modules, if you do not have time in your day to day work spent 10 minutes going through it so that you will get a basic understanding of Kubernetes in a week time ). The Kubernetes is well documented in [kubernetes.io web site ](https://kubernetes.io/) but it is a little difficult for a beginner to get through that documentation. I tried my level best to simplify the concept.
+{: style="text-align: justify;"}
+
+So what you are waiting for? 10 minutes in a day is just the time you normally take for going through some post in your favourite whatsup group.
+{: .notice--info}
+{: style="text-align: justify;"}
+
+I found time to prepare all this documentation by avoiding chat in a few of my favourite whatsup group. So no doubt you can make it. 
+{: .notice--success}
 {: style="text-align: justify;"}
