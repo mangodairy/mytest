@@ -1,5 +1,5 @@
 ---
-title: "1. Introduction to Linux"
+title: "Introduction to Linux"
 excerpt: "We will try to understand Linux from a layman's view."
 header:
   overlay_color: "#80aaff              "
