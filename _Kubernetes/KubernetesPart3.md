@@ -47,7 +47,7 @@ If you are interested to see the definition of each component please refer to th
 
 ### List the Worker Node Components
 
-In the previous chapter, before filtering the master node components we went through a few concepts and commands hope you remember those points if not, [please refresh it.  ](https://mangodairy.github.io/mytest/Kubernetes/KubernetesPart2/#list-the-control-plane-components)
+In the previous chapter, before filtering the master node components we went through a few concepts and commands hope you remember those points.If not, [please refresh it.  ](https://mangodairy.github.io/mytest/Kubernetes/KubernetesPart2/#list-the-control-plane-components)
 {: .notice--info}
 {: style="text-align: justify;"}
 
@@ -61,10 +61,11 @@ In the previous chapter, before filtering the master node components we went thr
 
 kube-proxy is a network proxy that runs on each cluster node including the master node, each node will have one set of kube-proxy running on it. This is achieved through daemonset which will discuss later in detail. Since it is maintained with the help of daemonset if we add additional nodes to the cluster we no need to deploy the kube-proxy on that node daemonset will take care of it and add a new pod in the node.
 
-Now we have the required details to filter only the kube-proxy from the cluster. 
-We will make the command. It is ,
+Now we have the required details to filter only the kube-proxy from the cluster.We will make the command.
+{: .notice--info}
+{: style="text-align: justify;"}
 
-*"kubectl get pods -n kube-system  |grep master"*
+**kubectl get pods -n kube-system  |grep master**
 
 Will execute it on a server and see the result.
 
@@ -79,6 +80,8 @@ kube-proxy-vkdvx                     1/1     Running   7          16d
 In the command output you can see there are four kube-proxy runnings on this cluster, it is a four-node cluster including the master node. But how we will see the pods are distributed across the nodes?
 
 You remember we were discussing an option "-o wide" we will try it with the above command to see how the output will look like.
+{: .notice--info}
+{: style="text-align: justify;"}
 ```markdown
 rajith@k8s-master:~$ kubectl get pods -n kube-system -o wide  |grep kube-proxy
 kube-proxy-86f72                     1/1     Running   8          16d   192.168.50.11   node-1       <none>           <none>
@@ -88,6 +91,8 @@ kube-proxy-vkdvx                     1/1     Running   7          16d   192.168.
 rajith@k8s-master:~$ 
 ```
 See the 7th and 8th column you can see the server IP address and the hostname respectively. Please have a close look, you will notice that each kube-proxy pod is running on each node of the cluster. That is what we discussed sometime back.
+{: .notice--info}
+{: style="text-align: justify;"}
 
 But with the above command we listed only pod then what is 'daemonset'? . These pods are created with the help of a 'daemonset' we will see that.
 We will execute the command which we discussed as the second point. *"kubectl get daemonsets"*
@@ -123,6 +128,8 @@ Warning: some journal files were not opened due to insufficient permissions.
 rajith@node-1:/$
 ```
 This is a Linux command, the warning shows because I am running it as a noon-root user. Ignore it for now.
+{: .notice--info}
+{: style="text-align: justify;"}
 
 
 ### [Container runtime](https://kubernetes.io/docs/concepts/overview/components/#container-runtime)
@@ -155,6 +162,7 @@ Jun 18 02:23:08 node-1 dockerd[711]: time="2021-06-18T02:23:08.525253826Z" level
 root@node-1:~#
 ```
 Now I ran this command as the root user, you can see the previous warning has gone and lots of other message and warning came, at this stage, we are not much worried about those messages and warnings.
+{: .notice--info}
 {: style="text-align: justify;"}
 
 
