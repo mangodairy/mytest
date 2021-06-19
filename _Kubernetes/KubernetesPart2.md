@@ -86,14 +86,16 @@ We had quick look at the server,now we will have a look at control-plane compone
 * The static pod will be suffixed with the node name in which they started.
 * The control plane components are placed under the namespace called 'kube-system' .
 
-Ohh !!! We explained a lot !!!!!!!!!!!!  don't worry. I explained all these to make a simple command filtering combination to list only the control-plane components. All these concepts are discussed later in their own session. 
+Ohh !!! We explained a lot !!!!!!!!!!!!  don't worry. I explained all these to make a simple command filtering combination to list only the control-plane components. All these concepts are discussed later in their own session.
+{: .notice--info}
+{: style="text-align: justify;"}
 
 We got all the required details to filter only the control-plane components. 
 We will make the command. It is ,
 
 **kubectl get pods -n kube-system  |grep master**
 
-Will execute on a server and see the result.
+Will execute it on a server and see the result.
 
 ```markdown
 rajith@k8s-master:~$ kubectl get pods -n kube-system  |grep master
