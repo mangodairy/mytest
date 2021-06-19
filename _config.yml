@@ -10,17 +10,17 @@ minimal_mistakes_skin    : "mint" #"default" , "air", "aqua", "contrast", "dark"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Mango Dairy"
+title                    : "My Tech Page"
 title_separator          : "-"
-subtitle                 : "Mango Dairy"
+subtitle                 : "Kubernetes Linux Ansible Docker .."
 name                     : "Your Name"
-description              : "നാടൻ മാവുകൾ..."
+description              : "My Tech Page..."
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : 
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : "/assets/images/Logo1.png" # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
-masthead_title           : "നാടൻ മാവുകൾ" # overrides the website title displayed in the masthead, use " " for no title
+masthead_title           : "My Tech Page.." # overrides the website title displayed in the masthead, use " " for no title
 show_date: true
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
