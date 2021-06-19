@@ -48,6 +48,8 @@ If you are interested to see the definition of each component please refer to th
 ### List the Worker Node Components
 
 In the previous chapter, before filtering the master node components we went through a few concepts and commands hope you remember those points if not, [please refresh it.  ](https://mangodairy.github.io/mytest/Kubernetes/KubernetesPart2/#list-the-control-plane-components)
+{: .notice--info}
+{: style="text-align: justify;"}
 
 **If you remeber those points we will add few more points here to understand it better.**
 
