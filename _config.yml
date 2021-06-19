@@ -43,7 +43,7 @@ words_per_minute         : 200
 #    endpoint             : # "https://{your Staticman v3 API}/v3/entry/github/"
 #atom_feed:
 #  path                   : # blank (default) uses feed.xml
-#search                   : false # true, false (default)
+#search                   : true # true, false (default)
 #search_full_content      : false # true, false (default)
 #search_provider          : "lunr"
 algolia:
@@ -102,7 +102,7 @@ author:
      # url: "https://your-site.com"
     - label: "FaceBook"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://www.facebook.com/groups/326549171395987"
+      url: "https://www.facebook.com/rajithpram"
      #- label: "Instagram"
      # icon: "fab fa-fw fa-instagram"
      # url: "https://instagram.com/"
@@ -113,7 +113,7 @@ footer:
   links:
     - label: "Facebook"
       icon: "fab fa-fw fa-twitter-square"
-      url: "https://www.facebook.com/groups/326549171395987"
+      url: "https://www.facebook.com/rajithpram"
 
 
 
