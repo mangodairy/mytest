@@ -1,5 +1,6 @@
 ---
 title: "Kubernetes  Architecture Worker Node Components"
+excerpt: "In this module, we will play with the worker node, pods and the other components running on it."
 header:
   overlay_color: "#80aaff              "
   teaser: /assets/images/kuberneties/IntroductiontoKubernetes.png

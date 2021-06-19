@@ -1,5 +1,6 @@
 ---
 title: "Kubernetes  Architecture Control Plane Components"
+excerpt: "In this module, we will play with the master node and the pods running on it."
 header:
   overlay_color: "#80aaff              "
   teaser: /assets/images/kuberneties/IntroductiontoKubernetes.png

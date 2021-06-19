@@ -1,6 +1,6 @@
 ---
 title: "Introduction to Kubernetes "
-excerpt: "In this series, we are covering the basic structure of Kubernetes."
+excerpt: "In this module, we are covering the basic structure of Kubernetes."
 header:
   overlay_color: "#80aaff              "
   teaser: /assets/images/kuberneties/IntroductiontoKubernetes.png
