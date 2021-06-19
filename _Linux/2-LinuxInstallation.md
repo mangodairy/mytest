@@ -1,5 +1,6 @@
 ---
-title: "Linux Installation"
+title: "2. Linux Installation"
+excerpt: "Points to be taken care of during installation."
 header:
   overlay_color: "#80aaff              "
   excerpt: "Linux Installation"
