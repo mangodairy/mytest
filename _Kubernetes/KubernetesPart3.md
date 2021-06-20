@@ -213,10 +213,8 @@ Kubernetes doesn't have its own networking model it uses third party implementat
 * Pods on a node can communicate with all pods on all nodes without NAT
 * Agents on a node (e.g. system daemons, kubelet) can communicate with all pods on that node
 Note: For those platforms that support Pods running in the host network (e.g. Linux)
-{: .notice--info}
-{: style="text-align: justify;"}
 * Pods in the host network of a node can communicate with all pods on all nodes without NAT.
-
+{: style="text-align: justify;"}
 There are many varieties of network implementation for Kubernetes. [ Please refer this link for details](https://kubernetes.io/docs/concepts/cluster-administration/networking/)
 
 Here we used ["weave-net"](https://www.weave.works/oss/net/).
@@ -224,6 +222,7 @@ Here we used ["weave-net"](https://www.weave.works/oss/net/).
 *We will go through the cluster to understand the implementation.*
 
 We have four pods running with 'weave-net' image.
+{: style="text-align: justify;"}
 ```markdown
 rajith@k8s-master:~$ kubectl get pods -n kube-system  |grep weave-net
 weave-net-46pcs                      2/2     Running   22         18d
@@ -233,6 +232,7 @@ weave-net-t4g45                      2/2     Running   19         18d
 ```
 
 It is controlled by daemonsets named 'weave-net'.
+{: style="text-align: justify;"}
 ```markdown
 rajith@k8s-master:~$ kubectl get daemonsets  -n kube-system 
 NAME         DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR            AGE
@@ -241,6 +241,7 @@ weave-net    4         4         4       4            4           <none>        
 ```
 
 If it is a 'daemonsets' it should implement one pod per node, we will see how it is deployed.
+{: style="text-align: justify;"}
 ```markdown
 rajith@k8s-master:~$ kubectl get pods -n kube-system -o wide  |grep weave-net
 weave-net-46pcs                      2/2     Running   22         18d    192.168.50.11   node-1       <none>           <none>
@@ -250,7 +251,11 @@ weave-net-t4g45                      2/2     Running   19         18d    192.168
 rajith@k8s-master:~$
 ```
 See the 6th and 7th column you can see the server IP address and the hostname respectively.
+{: style="text-align: justify;"}
 
+There are many addons available for Kubernetes, at this moment it is not required for us. Maybe we will cover it later. [ Or if you are interested to go through it please click here](https://kubernetes.io/docs/concepts/overview/components/#addons)
+{: .notice--info}
+{: style="text-align: justify;"}
 
 <div markdown="0"><a href="#" class="btn btn--success">Go back to the Top of the page </a></div>
 
