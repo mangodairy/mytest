@@ -90,7 +90,7 @@ kube-proxy-n9phj                     1/1     Running   7          16d   192.168.
 kube-proxy-vkdvx                     1/1     Running   7          16d   192.168.50.10   k8s-master   <none>           <none>
 rajith@k8s-master:~$ 
 ```
-See the 7th and 8th column you can see the server IP address and the hostname respectively. Please have a close look, you will notice that each kube-proxy pod is running on each node of the cluster. That is what we discussed sometime back.
+See the 6th and 7th column you can see the server IP address and the hostname respectively. Please have a close look, you will notice that each kube-proxy pod is running on each node of the cluster. That is what we discussed sometime back.
 {: .notice--info}
 {: style="text-align: justify;"}
 
@@ -176,7 +176,7 @@ Even though the DNS is considered as addons this is one of the mandatory require
 
 #### Pod associated with CoreDNS
 ```markdown
-Pod associated with CoreDNS
+#Pod associated with CoreDNS#
 
 rajith@k8s-master:~$ kubectl get pods -n kube-system  |grep dns
 coredns-558bd4d5db-8t95j             1/1     Running   6          12d
@@ -184,14 +184,14 @@ coredns-558bd4d5db-mtq96             1/1     Running   2          3d7h
 ```
 #### Deployment associated with CoreDNS
 ```markdown
-Deployment associated with CoreDNS
+#Deployment associated with CoreDNS#
 rajith@k8s-master:~$ kubectl get deployments.apps  -n kube-system  
 NAME      READY   UP-TO-DATE   AVAILABLE   AGE
 coredns   2/2     2            2           18d
 ```
 #### Service associated with CoreDNS
 ```markdown
-Service associated with CoreDNS
+#Service associated with CoreDNS#
 
 rajith@k8s-master:~$ kubectl get service -n kube-system 
 NAME       TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                  AGE
@@ -207,6 +207,49 @@ This is how the CoreDNS is implemented on a cluster,
 We will discuss deployment and service in upcoming modules.
 {: .notice--info}
 {: style="text-align: justify;"}
+
+### The Kubernetes Networking Model
+Kubernetes doesn't have its own networking model it uses third party implementation however, Kubernetes imposes the following fundamental requirements on any networking implementation (barring any intentional network segmentation policies):
+* Pods on a node can communicate with all pods on all nodes without NAT
+* Agents on a node (e.g. system daemons, kubelet) can communicate with all pods on that node
+Note: For those platforms that support Pods running in the host network (e.g. Linux)
+{: .notice--info}
+{: style="text-align: justify;"}
+* Pods in the host network of a node can communicate with all pods on all nodes without NAT.
+
+There are many varieties of network implementation for Kubernetes. [ Please refer this link for details](https://kubernetes.io/docs/concepts/cluster-administration/networking/)
+
+Here we used ["weave-net"](https://www.weave.works/oss/net/).
+
+*We will go through the cluster to understand the implementation.*
+
+We have four pods running with 'weave-net' image.
+```markdown
+rajith@k8s-master:~$ kubectl get pods -n kube-system  |grep weave-net
+weave-net-46pcs                      2/2     Running   22         18d
+weave-net-dsw4n                      2/2     Running   20         18d
+weave-net-slfx4                      2/2     Running   21         18d
+weave-net-t4g45                      2/2     Running   19         18d
+```
+
+It is controlled by daemonsets named 'weave-net'.
+```markdown
+rajith@k8s-master:~$ kubectl get daemonsets  -n kube-system 
+NAME         DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR            AGE
+kube-proxy   4         4         4       4            4           kubernetes.io/os=linux   18d
+weave-net    4         4         4       4            4           <none>                   18d
+```
+
+If it is a 'daemonsets' it should implement one pod per node, we will see how it is deployed.
+```markdown
+rajith@k8s-master:~$ kubectl get pods -n kube-system -o wide  |grep weave-net
+weave-net-46pcs                      2/2     Running   22         18d    192.168.50.11   node-1       <none>           <none>
+weave-net-dsw4n                      2/2     Running   20         18d    192.168.50.10   k8s-master   <none>           <none>
+weave-net-slfx4                      2/2     Running   21         18d    192.168.50.12   node-2       <none>           <none>
+weave-net-t4g45                      2/2     Running   19         18d    192.168.50.13   node-3       <none>           <none>
+rajith@k8s-master:~$
+```
+See the 6th and 7th column you can see the server IP address and the hostname respectively.
 
 
 <div markdown="0"><a href="#" class="btn btn--success">Go back to the Top of the page </a></div>
