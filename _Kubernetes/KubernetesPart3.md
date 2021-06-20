@@ -224,6 +224,8 @@ Here we used ["weave-net"](https://www.weave.works/oss/net/).
 #### We have four pods running with 'weave-net' image.
 {: style="text-align: justify;"}
 ```markdown
+###Pod associated with weave-net###
+
 rajith@k8s-master:~$ kubectl get pods -n kube-system  |grep weave-net
 weave-net-46pcs                      2/2     Running   22         18d
 weave-net-dsw4n                      2/2     Running   20         18d
@@ -234,6 +236,8 @@ weave-net-t4g45                      2/2     Running   19         18d
 #### It is controlled by daemonsets named 'weave-net'.
 {: style="text-align: justify;"}
 ```markdown
+###Daemonset associated with weave-net###
+
 rajith@k8s-master:~$ kubectl get daemonsets  -n kube-system 
 NAME         DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR            AGE
 kube-proxy   4         4         4       4            4           kubernetes.io/os=linux   18d
@@ -243,6 +247,7 @@ weave-net    4         4         4       4            4           <none>        
 #### If it is a 'daemonsets' it should implement one pod per node, we will see how it is deployed.
 {: style="text-align: justify;"}
 ```markdown
+###Pod and the associated nodes###
 rajith@k8s-master:~$ kubectl get pods -n kube-system -o wide  |grep weave-net
 weave-net-46pcs                      2/2     Running   22         18d    192.168.50.11   node-1       <none>           <none>
 weave-net-dsw4n                      2/2     Running   20         18d    192.168.50.10   k8s-master   <none>           <none>
