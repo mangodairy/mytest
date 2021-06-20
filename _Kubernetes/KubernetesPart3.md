@@ -258,7 +258,7 @@ weave-net-slfx4                      2/2     Running   21         18d    192.168
 weave-net-t4g45                      2/2     Running   19         18d    192.168.50.13   node-3       <none>           <none>
 rajith@k8s-master:~$
 ```
-See the 6th and 7th column you can see the server IP address and the hostname respectively.
+See the 6th and 7th column you can see the server IP address and the hostname respectively. It is implemented in master node + theree worker node one per each node.
 {: style="text-align: justify;"}
 
 There are many addons available for Kubernetes, at this moment it is not required for us. Maybe we will cover it later. [ Or if you are interested to go through it please click here](https://kubernetes.io/docs/concepts/overview/components/#addons)
