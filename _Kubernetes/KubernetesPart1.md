@@ -117,6 +117,8 @@ This figure gives you an illustration of Kubernetes architecture. It shows how a
 10. The business wanted to implement it now since it is the new year day.
 11. We will implement the change  by Keep serving the existing  requests during the upgrade without any interruption to the end-user
 
+I will add the demo in another page and provide the link here . I am also planning a video  for the same but it will take some time .
+
 
 
 

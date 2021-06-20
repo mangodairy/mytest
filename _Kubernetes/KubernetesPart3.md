@@ -166,6 +166,36 @@ Now I ran this command as the root user, you can see the previous warning has go
 {: style="text-align: justify;"}
 
 
+## Addons
+
+The components already discussed are the core components needed for Kubernetes to work, there are few more components needed for the smooth functioning of  Kubernetes we will go through it.
+{: style="text-align: justify;"}
+
+### [CoreDNS](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#coredns)
+Even though the DNS is considered as addons this is one of the mandatory requirements. You can choose your own DNS, by default [CoreDNS](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#coredns) come along with the "kubeadm" implementation. As the name implies it is for DNS, I think it doesn't need an explanation.
+
+```markdown
+rajith@k8s-master:~$ kubectl get pods -n kube-system  |grep dns
+coredns-558bd4d5db-8t95j             1/1     Running   6          12d
+coredns-558bd4d5db-mtq96             1/1     Running   2          3d7h
+rajith@k8s-master:~$ kubectl get deployments.apps  -n kube-system  
+NAME      READY   UP-TO-DATE   AVAILABLE   AGE
+coredns   2/2     2            2           18d
+rajith@k8s-master:~$ kubectl get service -n kube-system 
+NAME       TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                  AGE
+kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   18d
+rajith@k8s-master:~$ 
+```
+This is how the CoreDNS is implemented on a cluster, 
+
+* Two pods are running to service this.
+* It is controlled by a deployment named "coredns".
+* It is made available to the cluster through the service named "kube-dns".
+
+We will discuss deployment and service in upcoming modules.
+{: .notice--info}
+{: style="text-align: justify;"}
+
 
 <div markdown="0"><a href="#" class="btn btn--success">Go back to the Top of the page </a></div>
 
