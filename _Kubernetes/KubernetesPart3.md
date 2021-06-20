@@ -200,7 +200,7 @@ rajith@k8s-master:~$
 ```
 This is how the CoreDNS is implemented on a cluster, 
 
-* Two pods are running to service this.
+* Two pods are running to serve dns requests.
 * It is controlled by a deployment named "coredns".
 * It is made available to the cluster through the service named "kube-dns".
 
@@ -212,14 +212,17 @@ We will discuss deployment and service in the upcoming modules.
 Kubernetes doesn't have its own networking model it uses third party implementation however, Kubernetes imposes the following fundamental requirements on any networking implementation (barring any intentional network segmentation policies):
 * Pods on a node can communicate with all pods on all nodes without NAT
 * Agents on a node (e.g. system daemons, kubelet) can communicate with all pods on that node
+{: style="text-align: justify;"}
 Note: For those platforms that support Pods running in the host network (e.g. Linux)
+{: style="text-align: justify;"}
+{: .notice--info}
 * Pods in the host network of a node can communicate with all pods on all nodes without NAT.
 {: style="text-align: justify;"}
+
 There are many varieties of network implementation for Kubernetes. [ Please refer this link for details](https://kubernetes.io/docs/concepts/cluster-administration/networking/)
 
-Here we used ["weave-net"](https://www.weave.works/oss/net/).
-
-*We will go through the cluster to understand the implementation.*
+Here we used ["weave-net"](https://www.weave.works/oss/net/).*We will go through the cluster to understand the implementation.*
+{: style="text-align: justify;"}
 
 #### We have four pods running with 'weave-net' image.
 {: style="text-align: justify;"}
