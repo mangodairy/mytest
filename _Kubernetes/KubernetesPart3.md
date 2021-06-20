@@ -174,13 +174,20 @@ The components already discussed are the core components needed for Kubernetes t
 ### [CoreDNS](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#coredns)
 Even though the DNS is considered as addons this is one of the mandatory requirements. You can choose your own DNS, by default [CoreDNS](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#coredns) come along with the "kubeadm" implementation. As the name implies it is for DNS, I think it doesn't need an explanation.
 
+#### pod associated with CoreDNS
 ```markdown
 rajith@k8s-master:~$ kubectl get pods -n kube-system  |grep dns
 coredns-558bd4d5db-8t95j             1/1     Running   6          12d
 coredns-558bd4d5db-mtq96             1/1     Running   2          3d7h
+```
+#### deployment associated with CoreDNS
+```markdown
 rajith@k8s-master:~$ kubectl get deployments.apps  -n kube-system  
 NAME      READY   UP-TO-DATE   AVAILABLE   AGE
 coredns   2/2     2            2           18d
+```
+```markdown
+#### service associated with CoreDNS
 rajith@k8s-master:~$ kubectl get service -n kube-system 
 NAME       TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                  AGE
 kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   18d
