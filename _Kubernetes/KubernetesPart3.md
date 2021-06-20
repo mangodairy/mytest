@@ -176,7 +176,7 @@ Even though the DNS is considered as addons this is one of the mandatory require
 
 #### Pod associated with CoreDNS
 ```markdown
-#Pod associated with CoreDNS#
+###Pod associated with CoreDNS###
 
 rajith@k8s-master:~$ kubectl get pods -n kube-system  |grep dns
 coredns-558bd4d5db-8t95j             1/1     Running   6          12d
@@ -184,14 +184,14 @@ coredns-558bd4d5db-mtq96             1/1     Running   2          3d7h
 ```
 #### Deployment associated with CoreDNS
 ```markdown
-#Deployment associated with CoreDNS#
+###Deployment associated with CoreDNS###
 rajith@k8s-master:~$ kubectl get deployments.apps  -n kube-system  
 NAME      READY   UP-TO-DATE   AVAILABLE   AGE
 coredns   2/2     2            2           18d
 ```
 #### Service associated with CoreDNS
 ```markdown
-#Service associated with CoreDNS#
+###Service associated with CoreDNS###
 
 rajith@k8s-master:~$ kubectl get service -n kube-system 
 NAME       TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                  AGE
@@ -204,7 +204,7 @@ This is how the CoreDNS is implemented on a cluster,
 * It is controlled by a deployment named "coredns".
 * It is made available to the cluster through the service named "kube-dns".
 
-We will discuss deployment and service in upcoming modules.
+We will discuss deployment and service in the upcoming modules.
 {: .notice--info}
 {: style="text-align: justify;"}
 
@@ -221,7 +221,7 @@ Here we used ["weave-net"](https://www.weave.works/oss/net/).
 
 *We will go through the cluster to understand the implementation.*
 
-We have four pods running with 'weave-net' image.
+#### We have four pods running with 'weave-net' image.
 {: style="text-align: justify;"}
 ```markdown
 rajith@k8s-master:~$ kubectl get pods -n kube-system  |grep weave-net
@@ -231,7 +231,7 @@ weave-net-slfx4                      2/2     Running   21         18d
 weave-net-t4g45                      2/2     Running   19         18d
 ```
 
-It is controlled by daemonsets named 'weave-net'.
+#### It is controlled by daemonsets named 'weave-net'.
 {: style="text-align: justify;"}
 ```markdown
 rajith@k8s-master:~$ kubectl get daemonsets  -n kube-system 
@@ -240,7 +240,7 @@ kube-proxy   4         4         4       4            4           kubernetes.io/
 weave-net    4         4         4       4            4           <none>                   18d
 ```
 
-If it is a 'daemonsets' it should implement one pod per node, we will see how it is deployed.
+#### If it is a 'daemonsets' it should implement one pod per node, we will see how it is deployed.
 {: style="text-align: justify;"}
 ```markdown
 rajith@k8s-master:~$ kubectl get pods -n kube-system -o wide  |grep weave-net
