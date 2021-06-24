@@ -47,24 +47,35 @@ As the name implies it has only "one container per pod". This is the most common
 
 ### Multi Container Pod.
 
-Pods that run multiple containers that need to work together. These pods share resources like filesystem and IP address.
+Pods that run multiple containers that need to work together. These pods share resources like filesystem and IP address.The primary purpose of the multi containers pod is to support helper applications that assist a primary application. There are many use case like,
+* data pullers
+* data pushers
+* proxies
+This figure gives you an illustration of Multiple container Pod.
+
+{: style="text-align: justify;"}
+<figure>
+	<a href="https://d33wubrfki0l68.cloudfront.net/aecab1f649bc640ebef1f05581bfcc91a48038c4/728d6/images/docs/pod.svg"><img src="https://d33wubrfki0l68.cloudfront.net/aecab1f649bc640ebef1f05581bfcc91a48038c4/728d6/images/docs/pod.svg"></a>
+	<figcaption><a href="https://kubernetes.io/docs/concepts/workloads/pods/" title="How Pods manage multiple containers, from kubernetes.io"> How Pods manage multiple containers, from kubernetes.io</a>.</figcaption>
+</figure>
 
 ### Static Pod.
 
 static Pods are managed directly by the 'kubelet' daemon on a specific node. These are not monitored by the control-plane components. Because of this, you can see that most of the control planecomponents are made up of static pods.
-
+{: style="text-align: justify;"}
 We will have a look at it shortly.
 
 ### Init Containers
 
 Init Containers are specialized containers that run before app containers. In a Pod. Init containers can contain utilities or setup scripts not present in an app image. We will have a detailed discussion of this in another series which is specifically talking about the PODs.
-
+{: style="text-align: justify;"}
 ## Creating a Pod
 
 There are two methods to create anything in a k8s cluster those are, 
 
 * Using Imperative Commands
 * Using Declarative methods
+{: style="text-align: justify;"}
 
 ### Creating the Pod Using Imperative Commands
 
@@ -178,18 +189,9 @@ This time you can see the container creation was much faster. The reason behind 
 {: .notice--info}
 {: style="text-align: justify;"}
 
-## Multiple Containers Pod
-
-The primary purpose of the multi containers pod is to support helper applications that assist a primary application. There are many use case like,
-* data pullers
-* data pushers
-* proxies
-This figure gives you an illustration of Multiple container Pod.
-
-<figure>
-	<a href="https://d33wubrfki0l68.cloudfront.net/aecab1f649bc640ebef1f05581bfcc91a48038c4/728d6/images/docs/pod.svg"><img src="https://d33wubrfki0l68.cloudfront.net/aecab1f649bc640ebef1f05581bfcc91a48038c4/728d6/images/docs/pod.svg"></a>
-	<figcaption><a href="https://kubernetes.io/docs/concepts/workloads/pods/" title="How Pods manage multiple containers, from kubernetes.io"> How Pods manage multiple containers, from kubernetes.io</a>.</figcaption>
-</figure>
+**We will have a detailed discussion of this in another series which is specifically talking about the PODs.**
+{: .notice--success}
+{: style="text-align: justify;"}
 
 <div markdown="0"><a href="#" class="btn btn--success">Go back to the Top of the page </a></div>
 
