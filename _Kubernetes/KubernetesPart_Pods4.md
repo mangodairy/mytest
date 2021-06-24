@@ -1,10 +1,10 @@
 ---
-title: "Pods"
+title: "Create your First Pod."
 excerpt: "In this module, we will go through the basics of pods and understand the structure of pod definition."
 header:
   overlay_color: "#80aaff              "
   teaser: /assets/images/kuberneties/Day4.png
-  excerpt: "Different Types of Pods."
+  excerpt: "Create your First Pod and understand the Pod definition file."
   show_overlay_excerpt: false
   show_date: true
 sidebar:
@@ -65,6 +65,7 @@ There are two methods to create anything in a k8s cluster those are,
 
 * Using Imperative Commands
 * Using Declarative methods
+
 ### Creating the Pod Using Imperative Commands
 
 We need to specify the name of the pod and the image with which the pod needs to be created.
@@ -126,13 +127,11 @@ Spec:
      image: nginx
     # The container specification section ends here
 ```
-This is how a simple pod definition file looks like.
-
 This is how a simple pod definition file looks like. In the previous method, we specified everything in the command line itself. Here we defined it under the pod definition file.
 ### Creating the Pod Using Declarative method
 
-List the existing pod 
 
+List the existing pod 
 ```markdown
 rajith@k8s-master:~$ kubectl get pods
 NAME           READY   STATUS    RESTARTS   AGE
@@ -179,6 +178,18 @@ This time you can see the container creation was much faster. The reason behind 
 {: .notice--info}
 {: style="text-align: justify;"}
 
+## Multiple Containers Pod
+
+The primary purpose of the multi containers pod is to support helper applications that assist a primary application. There are many use case like,
+* data pullers
+* data pushers
+* proxies
+This figure gives you an illustration of Multiple container Pod.
+
+<figure>
+	<a href="https://d33wubrfki0l68.cloudfront.net/aecab1f649bc640ebef1f05581bfcc91a48038c4/728d6/images/docs/pod.svg"><img src="https://d33wubrfki0l68.cloudfront.net/aecab1f649bc640ebef1f05581bfcc91a48038c4/728d6/images/docs/pod.svg"></a>
+	<figcaption><a href="https://kubernetes.io/docs/concepts/workloads/pods/" title="How Pods manage multiple containers, from kubernetes.io"> How Pods manage multiple containers, from kubernetes.io</a>.</figcaption>
+</figure>
 
 <div markdown="0"><a href="#" class="btn btn--success">Go back to the Top of the page </a></div>
 
