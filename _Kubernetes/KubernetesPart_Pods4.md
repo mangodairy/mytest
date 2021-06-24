@@ -54,10 +54,12 @@ Pods that run multiple containers that need to work together. These pods share r
 This figure gives you an illustration of Multiple container Pod.
 
 {: style="text-align: justify;"}
-<figure>
-	<a href="https://d33wubrfki0l68.cloudfront.net/aecab1f649bc640ebef1f05581bfcc91a48038c4/728d6/images/docs/pod.svg"><img src="https://d33wubrfki0l68.cloudfront.net/aecab1f649bc640ebef1f05581bfcc91a48038c4/728d6/images/docs/pod.svg"></a>
-	<figcaption><a href="https://kubernetes.io/docs/concepts/workloads/pods/" title="How Pods manage multiple containers, from kubernetes.io"> How Pods manage multiple containers, from kubernetes.io</a>.</figcaption>
-</figure>
+
+<figure class="align-center">
+  <img src="{{https://d33wubrfki0l68.cloudfront.net}}/aecab1f649bc640ebef1f05581bfcc91a48038c4/728d6/images/docs/pod.svg" alt="">
+  <figcaption>How Pods manage multiple containers, from kubernetes.io .</figcaption>
+</figure> 
+
 
 ### Static Pod.
 
