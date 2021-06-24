@@ -52,13 +52,7 @@ Pods that run multiple containers that need to work together. These pods share r
 * data pushers
 * proxies
 This figure gives you an illustration of Multiple container Pod.
-
 {: style="text-align: justify;"}
-
-<figure class="align-center">
-  <img src="{{https://d33wubrfki0l68.cloudfront.net}}/aecab1f649bc640ebef1f05581bfcc91a48038c4/728d6/images/docs/pod.svg" alt="">
-  <figcaption>How Pods manage multiple containers, from kubernetes.io .</figcaption>
-</figure> 
 
 
 ### Static Pod.
