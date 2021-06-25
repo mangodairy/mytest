@@ -319,7 +319,7 @@ It is placed on node-1.
 We came lots of steps ahead of what we thought of discussing here. There are lot more to cover, those points will be cover in another series. 
 {: style="text-align: justify;"}
 
-<p>
+
 **I thought of covering a demo here however, the topic went for a long so giving a small pause here.In the next module we will cover the demo with the below steps.**
 
 * Creating a Kubernetes deployment.
@@ -330,7 +330,6 @@ We came lots of steps ahead of what we thought of discussing here. There are lot
 * Upgrade the application/container image version.
 * scale down the number of deployment to 3.
 * Destroy the deployment.
-</p>
 {: .notice--success}
 {: style="text-align: justify;"}
 
