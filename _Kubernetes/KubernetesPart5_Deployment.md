@@ -25,15 +25,20 @@ toc_sticky: true
 
 ## [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 
-We had discussed about the Pods in the previous module, the deployment controller controls the way Pods behave.
+We discussed about the Pods in the previous module, the deployment controller controls the way Pods behave.
 {: style="text-align: justify;"}
 It allows,
 {: style="text-align: justify;"}
 * Scaling
+
 Scale up the Deployment to facilitate more load.
+{: style="text-align: justify;"}
 * Rolling updates
+
 Rolling updates allow Deployment's update to take place with zero downtime by incrementally updating Pods.
+{: style="text-align: justify;"}
 * Rollbacks
+
 Rollback to an earlier version, if the current state of the Deployment is not stable or it is completely failed to serve the purpose.
 {: style="text-align: justify;"}
 
@@ -126,7 +131,7 @@ NAME           READY   STATUS    RESTARTS   AGE
 my-first-pod   1/1     Running   1          45h
 rajith@k8s-master:~$ 
 ```
-We have one pod running on this cluster, check for any existing deployment. 
+One pod running on this cluster, check for any existing deployment. 
 {: style="text-align: justify;"}
 
 
@@ -194,9 +199,9 @@ nginx-deployment-66b6c48dd5-bkwj6   0/1     Pending   0          6m15s
 nginx-deployment-66b6c48dd5-rlqjk   0/1     Pending   0          6m15s
 rajith@k8s-master:~$ 
 ```
-The pod is in the pending state, there is something unusual in the cluster. **I went through the logs and identified that the worker node had some issue.** 
+The pod is in the pending state, there is something unusual in the cluster. **Went through the logs and identified that the worker node had some issue.** 
 {: style="text-align: justify;"}
-See the cluster status , the worker nodes status is "NotReady".
+Here , the worker nodes status is "NotReady".
 {: style="text-align: justify;"}
 
 ```markdown
@@ -208,7 +213,7 @@ node-2       NotReady   <none>                 23d   v1.21.1
 node-3       NotReady   <none>                 23d   v1.21.1
 rajith@k8s-master:~$
 ```
-I corrected the issue for "node-1" and node-2", you can see those nodes status changed to "Ready".
+Corrected the issue for "node-1" and node-2", you can see those node's status changed to "Ready".
 {: style="text-align: justify;"}
 
 ```markdown
@@ -231,7 +236,7 @@ nginx-deployment-66b6c48dd5-bkwj6   0/1     ContainerCreating   0          10m
 nginx-deployment-66b6c48dd5-rlqjk   0/1     ContainerCreating   0          10m
 rajith@k8s-master:~$ 
 ```
-From "Pending" it is changed to "ContainerCreating ".We will see whether it is started or not.
+It changed to "ContainerCreating ".We will see whether the pod has started or not.
 {: style="text-align: justify;"}
 ```markdown
 rajith@k8s-master:~$ kubectl get pods
@@ -244,11 +249,12 @@ rajith@k8s-master:~$
 ```
 You can see the Pods created by the "nginx-deployment"  is in a running state. However, the other Pod is "Terminating". 
 {: style="text-align: justify;"}
-**Actually, I did not have the plan to share these details in this module. This should have been covered in the troubleshooting session. While preparing this document my cluster node had some real-time issue so I thought of sharing those things also with you.** Still, you can see the other Pod has some issue. That was expected when all the worker nodes are not ready it should have been already dead but it took some time to reflect the status. 
+**Actually, I did not have the plan to share these details in this module. This should have been covered in the troubleshooting session. While preparing this document my cluster node had some real-time issue so I thought of sharing those things also with you.** Still, you can see the other Pod has some issue. That was expected when all the worker nodes are not ready it should have been in dead state but it took some time to reflect it. 
+{: .notice--success}
 {: style="text-align: justify;"}
-Anyway, we reached this stage, we will see few more things. 
+Anyway, we reached here, we take a few more step ahead. 
 {: style="text-align: justify;"}
-In the previous output we saw that only two worker nodes are "Ready", so the deployment should place the pods only to those two nodes, but how we will see the Pod distribution? Hope you remember the "-o wide" option which we used in the previous module? 
+In the previous output we saw that only two worker nodes are "Ready", so the deployment should place the pods only to those two nodes, but how we will see the Pod distribution? Hope you remember the "-o wide" option which we used ? 
 {: style="text-align: justify;"}
 ```markdown
 rajith@k8s-master:~$ kubectl get pods -o wide
@@ -262,7 +268,7 @@ rajith@k8s-master:~$
 
 Here you can see all the pods are placed on "node-2" .
 {: style="text-align: justify;"}
-The reason is node-3 is anyway not ready.  First I corrected the issue of node-02, immediately after node-2 is ready the deployment controller started placing the Pods on that node. So Even if the "node-1" is ready the Pods are already placed.  So deployment controller will not relocate the Pod at this moment.
+The reason is node-3 is anyway not ready.  First I corrected the issue of node-02, immediately after node-2 is ready the deployment controller started placing the Pods on that node. So Even if the "node-1" is ready the Pods are already placed on node-2.  So deployment controller will not relocate the Pod at this moment.
 {: style="text-align: justify;"}
 **Now the chances of placing the Pod by this deployment controller is Listed below.**
 {: style="text-align: justify;"}
@@ -303,7 +309,7 @@ nginx-deployment-66b6c48dd5-rlqjk   1/1     Running       0          135m
 nginx-deployment-66b6c48dd5-s6pn4   1/1     Running       0          50s
 rajith@k8s-master:~$
 ```
-You can see another Pod named "nginx-deployment-66b6c48dd5-s6pn4" is automatically created and it is Running for the 50s. This means the deployment has the auto-healing capability. We no need to create it manually.
+You can see another Pod named "nginx-deployment-66b6c48dd5-s6pn4" is automatically created and it is Running for the 50s. This means the deployment has the auto-healing capability. We no need to create the pod manually.
 {: style="text-align: justify;"}
 
 ```markdown
