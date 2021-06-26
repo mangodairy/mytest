@@ -284,17 +284,17 @@ Try accessing 192.168.50.12:30007.
 
 <figure>
   <img src="/assets/images/kuberneties/Introduction/Service/Service-node02.png" alt="Image 2">
-  <figcaption>node-2 with the and port 192.168.50.12:30007 </figcaption>
+  <figcaption>node-2 with the IP and port "http://192.168.50.12:30007" </figcaption>
 </figure>
 
-**Yes, it is working.**
+**Yes, it is working.😊**
 {: style="text-align: justify;"}
 <figure>
   <img src="/assets/images/kuberneties/Introduction/Service/Service-node03.png" alt="Image 2">
-  <figcaption>node-3 with the and port 192.168.50.13:30007 </figcaption>
+  <figcaption>node-3 with the IP and port "http://192.168.50.13:30007" </figcaption>
 </figure>
 
-Yes,  that also works. Perfect all good 👍 .
+**Yes,  that also works. Perfect all good 👍.**
 {: style="text-align: justify;"}
 Final-output.png  Service-01.png  Service-masternode.png  Service-node01.png  Service-node02.png  Service-node03.png
 
