@@ -265,7 +265,7 @@ rajith@k8s-master:~$
 Pods are running on node-2 and node-3. The corresponding IP is '192.168.50.12' and '192.168.50.13'. We will see this IP from my laptop browser. 
 {: style="text-align: justify;"}
 
-{% include figure image_path="/assets/images/unsplash-image-10.jpg" alt="Image 1" caption="What happened? the Nginx welcome page is not showing!" %}
+
 <figure>
   <img src="/assets/images/kuberneties/Introduction/Service/Service-01.png" alt="Image 1">
   <figcaption>What happened? the Nginx welcome page is not showing!</figcaption>
