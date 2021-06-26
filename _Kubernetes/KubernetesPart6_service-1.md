@@ -44,10 +44,6 @@ It allows exposing the application running on a pod/deployment to,
 * NodePort
 * LoadBalancer
 
-## ClusterIP
-
-We will be having some situations like we need the application container to reach the DB service. It happens within the cluster. We do not need the DB port to be accessible to the external user. In this scenario, we can make use of the clusterIP. Exposes the DB/application port to its internal IP. ClusterIP is the default ServiceType in Kubernetes.
-{: style="text-align: justify;"}
 
 ## ClusterIP
 
