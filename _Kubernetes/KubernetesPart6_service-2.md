@@ -271,6 +271,33 @@ Pods are running on node-2 and node-3. The corresponding IP is '192.168.50.12' a
   <figcaption>What happened? the Nginx welcome page is not showing!</figcaption>
 </figure>
 
+
+```markdown
+rajith@k8s-master:~$ kubectl describe svc nginx-service |grep NodePort
+Type:                     NodePort
+NodePort:                 <unset>  30007/TCP
+rajith@k8s-master:~$ 
+```
+We need to use the NodePort along with the IP to access the page.
+Try accessing 192.168.50.12:30007.
+{: style="text-align: justify;"}
+
+<figure>
+  <img src="/assets/images/kuberneties/Introduction/Service/Service-node02.png" alt="Image 2">
+  <figcaption>node-2 with the and port 192.168.50.12:30007 </figcaption>
+</figure>
+
+**Yes, it is working.**
+{: style="text-align: justify;"}
+<figure>
+  <img src="/assets/images/kuberneties/Introduction/Service/Service-node03.png" alt="Image 2">
+  <figcaption>node-3 with the and port 192.168.50.13:30007 </figcaption>
+</figure>
+
+Yes,  that also works. Perfect all good 👍 .
+{: style="text-align: justify;"}
+Final-output.png  Service-01.png  Service-masternode.png  Service-node01.png  Service-node02.png  Service-node03.png
+
 <div markdown="0"><a href="#" class="btn btn--success">Go back to the Top of the page </a></div>
 
 
