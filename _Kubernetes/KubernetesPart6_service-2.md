@@ -268,9 +268,11 @@ Pods are running on node-2 and node-3. The corresponding IP is '192.168.50.12' a
 
 <figure>
   <img src="/assets/images/kuberneties/Introduction/Service/Service-01.png" alt="Image 1">
-  <figcaption>What happened? the Nginx welcome page is not showing!</figcaption>
+  <figcaption>node-2 with the IP "http://192.168.50.12" </figcaption>
 </figure>
 
+
+**What happened? the Nginx welcome page is not showing! 😳**
 
 ```markdown
 rajith@k8s-master:~$ kubectl describe svc nginx-service |grep NodePort
