@@ -1,6 +1,6 @@
 ---
 title: "What is a Service?"
-excerpt: "IMake the application access to the external world through the Kubernetes service."
+excerpt: "Make the application access to the external world through the Kubernetes service."
 header:
   overlay_color: "#80aaff              "
   teaser: /assets/images/kuberneties/Day6.png
@@ -43,6 +43,11 @@ It allows exposing the application running on a pod/deployment to,
 * ClusterIP (default type)
 * NodePort
 * LoadBalancer
+
+## ClusterIP
+
+We will be having some situations like we need the application container to reach the DB service. It happens within the cluster. We do not need the DB port to be accessible to the external user. In this scenario, we can make use of the clusterIP. Exposes the DB/application port to its internal IP. ClusterIP is the default ServiceType in Kubernetes.
+{: style="text-align: justify;"}
 
 ## ClusterIP
 
