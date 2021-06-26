@@ -1,6 +1,6 @@
 ---
-title: "Create your First Deployment."
-excerpt: "In this module, we will go through the basics of Deployment and create deployment."
+title: "Deployment Demo."
+excerpt: "Here we will play with the deployment. We will create, verify, scale-up, scale down and upgrade.."
 header:
   overlay_color: "#80aaff              "
   teaser: /assets/images/kuberneties/Day5.png
@@ -25,318 +25,442 @@ toc_sticky: true
 
 ## [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 
-We discussed about the Pods in the previous module, the deployment controller controls the way Pods behave.
-{: style="text-align: justify;"}
-It allows,
-{: style="text-align: justify;"}
-* Scaling
-
-Scale up the Deployment to facilitate more load.
-{: style="text-align: justify;"}
-* Rolling updates
-
-Rolling updates allow Deployment's update to take place with zero downtime by incrementally updating Pods.
-{: style="text-align: justify;"}
-* Rollbacks
-
-Rollback to an earlier version, if the current state of the Deployment is not stable or it is completely failed to serve the purpose.
+In the previous module, we saw how to create the deployment using a pod definition file. Here along with the demo, we will create the deployment with "imperative command". 
 {: style="text-align: justify;"}
 
-## Deployment Definition file
+## create the deployment with imperative command
 
-The structure of the deployment definition file looks like this.
+The below command does the same action it performed in the previous module using the declarative method.
 {: style="text-align: justify;"}
 
 ```yaml
-apiVersion: 
-kind: 
-metadata:apiVersion: 
-kind: 
-metadata:
-  name: 
-  labels:
-    app: 
-spec:
-  replicas: 
-  selector:
-    matchLabels:
-      app: 
-  template:
-    metadata:
-      labels:
-        app: 
-    spec:
-      containers:
-      - name: 
-        image: 
-        ports:
-        - containerPort: 
+kubectl create deployment nginx-deployment --image=nginx:1.14.2 --replicas=3
 ```
-**We will fill in the required information to create a deployment.**
-{: style="text-align: justify;"}
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: nginx-deployment
-  labels:
-    app: nginx
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: nginx
-  template:
-    metadata:
-      labels:
-        app: nginx
-    spec:
-      containers:
-      - name: nginx
-        image: nginx:1.14.2
-        ports:
-        - containerPort: 80
-```
-* The name of the 'Deployment' is  'nginx-deployment'.
-* The number of replicas ( the number of pods created by the deployment ) is 3.
-* The name of the Pod is "nginx".
-* The image used to create the deployment is "nginx:1.14.2"
-* The Pod listen to the port "80"
-In simple words, this is what this deployment definition file tells us.
-{: style="text-align: justify;"}
-
-We will have a detailed discussion on deployment in a later module which is specifically for deployment. 
-{: .notice--info}
+* It creates a  'Deployment' named 'nginx-deployment'.
+* With three replicas in it.
+* With the Nginx image version "nginx:1.14.2".
+* The name of the container will be "nginx".
+* The Pod listen to the port "80".
 {: style="text-align: justify;"}
 
 
-## Different Types of Pods 
+## Perform the cleanup.
 
+List the pods.
 
-## Creating the Deployment.
-
-As mentioned in the Pod, there are two methods to create a Deployment.
-
-* Using Imperative Commands
-* Using Declarative methods
-{: style="text-align: justify;"}
-
-### Creating the Deployment Using Deployment Definition file.
-
-Check for running pods.
-{: style="text-align: justify;"}
-```markdown
+```markup
 rajith@k8s-master:~$ kubectl get pods
-NAME           READY   STATUS    RESTARTS   AGE
-my-first-pod   1/1     Running   1          45h
+NAME                                READY   STATUS    RESTARTS   AGE
+nginx-deployment-66b6c48dd5-bkwj6   1/1     Running   1          10h
+nginx-deployment-66b6c48dd5-rlqjk   1/1     Running   1          10h
+nginx-deployment-66b6c48dd5-s6pn4   1/1     Running   1          8h
+rajith@k8s-master:~$
+```
+Check the deployment.
+
+```markup 
+rajith@k8s-master:~$ kubectl get deployments
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+nginx-deployment   3/3     3            3           10h
 rajith@k8s-master:~$ 
 ```
-One pod running on this cluster, check for any existing deployment. 
+Delete the deployment.
+
+```markup 
+rajith@k8s-master:~$ kubectl delete deployments  nginx-deployment
+deployment.apps "nginx-deployment" deleted
+rajith@k8s-master:~$ 
+```
+Verify the status of the deployment.
 {: style="text-align: justify;"}
-
-
-```markdown
+```markup 
 rajith@k8s-master:~$ kubectl get deployments
 No resources found in default namespace.
 rajith@k8s-master:~$ 
 ```
-At present there are no deployment running on this cluster.
+The deployment got deleted, what about the pods associated with it? 
 {: style="text-align: justify;"}
-Copy the deployment definition given above and create the definition file named "nginx-deployment.yaml" .
+```markup 
+rajith@k8s-master:~$ kubectl get pods
+No resources found in default namespace.
+rajith@k8s-master:~$ 
+```
+The pods also deleted along with the deployment. Cleanup is completed.
 {: style="text-align: justify;"}
+
+## Creating the deployment.
+
+As mentioned, let us start the deployment with the imperative command.
+{: style="text-align: justify;"}
+
+```markdown
+rajith@k8s-master:~$ kubectl create deployment nginx-deployment --image=nginx:1.14.2 --replicas=3 --port=80 
+deployment.apps/nginx-deployment created
+rajith@k8s-master:~$ 
+```
+Verify the pod creation.
+```markdown
+rajith@k8s-master:~$ kubectl get pods
+NAME                                READY   STATUS              RESTARTS   AGE
+nginx-deployment-65587f96cc-4fm7p   0/1     ContainerCreating   0          6s
+nginx-deployment-65587f96cc-lwc4c   1/1     Running             0          6s
+nginx-deployment-65587f96cc-sdhlf   1/1     Running             0          6s
+rajith@k8s-master:~$ 
+```
+It starts creating the pods. Two pods already created.  One of the pod is containerising now. We will see the status of the deployment.
+
+```markdown
+rajith@k8s-master:~$ kubectl get deployments
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+nginx-deployment   3/3     3            3           27s
+rajith@k8s-master:~$ 
+```
+It shows the 'READY` status '3/3' means all the pods are ready and running. We will see the pod status again.
+
+```markdown
+rajith@k8s-master:~$ kubectl get pods
+NAME                                READY   STATUS    RESTARTS   AGE
+nginx-deployment-65587f96cc-4fm7p   1/1     Running   0          46m
+nginx-deployment-65587f96cc-lwc4c   1/1     Running   0          46m
+nginx-deployment-65587f96cc-sdhlf   1/1     Running   0          46m
+rajith@k8s-master:~$ 
+```
+
+We verified the pods and the deployment. We have one more 'Kind' called 'replicaSet'. 
+In the background, it works like this.
+{: style="text-align: justify;"}
+* The deployment creates the replicaset.
+* The replicaset create the pods.
+
+See the replicaset.
+```markdown
+rajith@k8s-master:~$ kubectl get replicasets
+NAME                          DESIRED   CURRENT   READY   AGE
+nginx-deployment-65587f96cc   3         3         3       64m
+rajith@k8s-master:~$ 
+```
+We will detail about "replicaset" later. Now understand few concepts, we need a basic understanding of replicaset. That's why I thought of mentioning it here.
+{: style="text-align: justify;"}
+{: .notice--info}
+
+
+## Scale the number of the pod to 5.
+
+```markdown
+rajith@k8s-master:~$ kubectl scale deployment nginx-deployment --replicas=5
+deployment.apps/nginx-deployment scaled
+rajith@k8s-master:~$ 
+```
+Verify the number of pods.
+
+```markdown
+rajith@k8s-master:~$ kubectl get pods
+NAME                                READY   STATUS    RESTARTS   AGE
+nginx-deployment-65587f96cc-4fm7p   1/1     Running   0          79m
+nginx-deployment-65587f96cc-lwc4c   1/1     Running   0          79m
+nginx-deployment-65587f96cc-phjlk   1/1     Running   0          5s
+nginx-deployment-65587f96cc-px7ns   1/1     Running   0          5s
+nginx-deployment-65587f96cc-sdhlf   1/1     Running   0          79m
+rajith@k8s-master:~$ 
+```
+You can see two pods created 5 seconds ago. And we have a total of 5 pods in the deployment.
+We will see the status of the deployment and replicaset.
+{: style="text-align: justify;"}
+```markdown
+rajith@k8s-master:~$ kubectl get deployments
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+nginx-deployment   5/5     5            5           79m
+rajith@k8s-master:~$ kubectl get replicasets
+NAME                          DESIRED   CURRENT   READY   AGE
+nginx-deployment-65587f96cc   5         5         5       80m
+rajith@k8s-master:~$
+```
+Current and the desired state is five,  looks good.
+{: style="text-align: justify;"}
+
+## Upgrade the application/container image version.
+
+Now let us go and see another feature of deployment. 
+Rolling updates -> Rolling updates allow deployment update to take place with zero downtime by incrementally updating Pods.
+{: style="text-align: justify;"}
+
+See the current definition file. Have a look at the image version.
+{: style="text-align: justify;"}
+```yaml
+rajith@k8s-master:~$ cat nginx-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx-deployment
+  name: nginx-deployment
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: nginx-deployment
+  template:
+    metadata:
+      labels:
+        app: nginx-deployment
+    spec:
+      containers:
+      - image: nginx:1.14.2 <---Current  image version is 1.14.2
+        name: nginx
+        ports:
+        - containerPort: 80
+```
+Update the Nginx version to 'nginx:1.16.1 '.
+{: style="text-align: justify;"}
+
 ```yaml
 rajith@k8s-master:~$ vi nginx-deployment.yaml
 rajith@k8s-master:~$ cat nginx-deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
   labels:
-    app: nginx
+    app: nginx-deployment
+  name: nginx-deployment
 spec:
-  replicas: 3
+  replicas: 5
   selector:
     matchLabels:
-      app: nginx
+      app: nginx-deployment
   template:
     metadata:
       labels:
-        app: nginx
+        app: nginx-deployment
     spec:
       containers:
-      - name: nginx
-        image: nginx:1.14.2
+      - image: nginx:1.16.1 ##<---The image version changed to nginx:1.16.1##
+        name: nginx
         ports:
         - containerPort: 80
 rajith@k8s-master:~$ 
+
+```
+Before updating the image version, have a look at pods, deployment and replicaset. 
+{: style="text-align: justify;"}
+```markdown
+rajith@k8s-master:~$ kubectl get pods,deployment,rs
+NAME                                    READY   STATUS    RESTARTS   AGE
+pod/nginx-deployment-65587f96cc-4fm7p   1/1     Running   0          126m
+pod/nginx-deployment-65587f96cc-6jgbj   1/1     Running   0          14m
+pod/nginx-deployment-65587f96cc-lwc4c   1/1     Running   0          126m
+pod/nginx-deployment-65587f96cc-scjr4   1/1     Running   0          14m
+pod/nginx-deployment-65587f96cc-sdhlf   1/1     Running   0          126m
+
+NAME                               READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/nginx-deployment   5/5     5            5           126m
+
+NAME                                          DESIRED   CURRENT   READY   AGE
+replicaset.apps/nginx-deployment-65587f96cc   5         5         5       126m
+rajith@k8s-master:~$
+```
+All looks good.
+We need to see the image version of the running container. How to see that?
+{: style="text-align: justify;"}
+```markdown
+rajith@k8s-master:~$ kubectl get rs -o wide
+NAME                          DESIRED   CURRENT   READY   AGE    CONTAINERS   IMAGES         SELECTOR
+nginx-deployment-65587f96cc   5         5         5       127m   nginx        nginx:1.14.2   app=nginx-deployment,pod-template-hash=65587f96cc
+```
+Have a look at the 8th field, the "IMAGES". It is 'nginx:1.14.2'.
+We will upgrade the deployment with the help of the deployment definition file. 
+{: style="text-align: justify;"}
+```markdown
+rajith@k8s-master:~$ kubectl apply -f nginx-deployment.yaml 
+deployment.apps/nginx-deployment configured
+```
+We will see the status of pods, deployment and replicaset.
+{: style="text-align: justify;"}
+```yaml
+rajith@k8s-master:~$ kubectl get pods,deployment,rs
+NAME                                    READY   STATUS              RESTARTS   AGE
+pod/nginx-deployment-5dfc477cf8-75fxk   0/1     ContainerCreating   0          4s		<----###containerizing###	
+pod/nginx-deployment-5dfc477cf8-kfj29   0/1     ContainerCreating   0          4s
+pod/nginx-deployment-5dfc477cf8-qjcgd   0/1     ContainerCreating   0          4s
+pod/nginx-deployment-65587f96cc-4fm7p   1/1     Running             0          128m
+pod/nginx-deployment-65587f96cc-6jgbj   1/1     Running             0          16m
+pod/nginx-deployment-65587f96cc-lwc4c   1/1     Running             0          128m
+pod/nginx-deployment-65587f96cc-scjr4   0/1     Terminating         0          16m    	<----###Terminating###
+pod/nginx-deployment-65587f96cc-sdhlf   1/1     Running             0          128m
+
+NAME                               READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/nginx-deployment   4/5     3            4           128m
+
+NAME                                          DESIRED   CURRENT   READY   AGE
+replicaset.apps/nginx-deployment-5dfc477cf8   3         3         0       5s			<----###New replicaset###	 
+replicaset.apps/nginx-deployment-65587f96cc   4         4         4       128m
+rajith@k8s-master:~$
 ```
 
-Execute the command "kubectl create -f nginx-deployment.yam" to create the deployment.
-{: style="text-align: justify;"}
+Look at the output.
+
+* A new replicaset has created. 
+* One container started Terminating. 
+* Three pods started containerizing.
+
+Look at the available, ready, desired, current status and see what is exactly happening here.
 
 ```markdown
-rajith@k8s-master:~$ kubectl create -f nginx-deployment.yaml 
-deployment.apps/nginx-deployment created
+rajith@k8s-master:~$ kubectl get pods,deployment,rs
+NAME                                    READY   STATUS              RESTARTS   AGE
+pod/nginx-deployment-5dfc477cf8-75fxk   0/1     ContainerCreating   0          15s
+pod/nginx-deployment-5dfc477cf8-kfj29   0/1     ContainerCreating   0          15s
+pod/nginx-deployment-5dfc477cf8-qjcgd   0/1     ContainerCreating   0          15s
+pod/nginx-deployment-65587f96cc-4fm7p   1/1     Running             0          128m
+pod/nginx-deployment-65587f96cc-6jgbj   1/1     Running             0          16m
+pod/nginx-deployment-65587f96cc-lwc4c   1/1     Running             0          128m
+pod/nginx-deployment-65587f96cc-sdhlf   1/1     Running             0          128m
+
+NAME                               READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/nginx-deployment   4/5     3            4           128m
+
+NAME                                          DESIRED   CURRENT   READY   AGE
+replicaset.apps/nginx-deployment-5dfc477cf8   3         3         0       15s
+replicaset.apps/nginx-deployment-65587f96cc   4         4         4       128m
+rajith@k8s-master:~$
+```
+Just have a look at the change.
+
+```yaml
+rajith@k8s-master:~$ kubectl get rs -o wide
+NAME                          DESIRED   CURRENT   READY   AGE    CONTAINERS   IMAGES         SELECTOR
+nginx-deployment-5dfc477cf8   3         3         0       22s    nginx        nginx:1.16.1   app=nginx-deployment,pod-template-hash=5dfc477cf8
+nginx-deployment-65587f96cc   4         4         4       128m   nginx        nginx:1.14.2   app=nginx-deployment,pod-template-hash=65587f96cc
+rajith@k8s-master:~$ kubectl get pods,deployment,rs
+NAME                                    READY   STATUS              RESTARTS   AGE
+pod/nginx-deployment-5dfc477cf8-4s74w   0/1     ContainerCreating   0          4s
+pod/nginx-deployment-5dfc477cf8-75fxk   1/1     Running             0          28s     	<----###New pod created###
+pod/nginx-deployment-5dfc477cf8-crtwr   0/1     ContainerCreating   0          2s
+pod/nginx-deployment-5dfc477cf8-kfj29   1/1     Running             0          28s		<----###New pod created###
+pod/nginx-deployment-5dfc477cf8-qjcgd   0/1     ContainerCreating   0          28s
+pod/nginx-deployment-65587f96cc-4fm7p   1/1     Running             0          128m
+pod/nginx-deployment-65587f96cc-6jgbj   1/1     Terminating         0          16m		<----###Terminating###
+pod/nginx-deployment-65587f96cc-lwc4c   0/1     Terminating         0          128m
+pod/nginx-deployment-65587f96cc-sdhlf   1/1     Running             0          128m
+NAME                               READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/nginx-deployment   4/5     5            4           128m
+
+NAME                                          DESIRED   CURRENT   READY   AGE
+replicaset.apps/nginx-deployment-5dfc477cf8   5         5         2       28s		<----###Newly created podon new replicaset###
+replicaset.apps/nginx-deployment-65587f96cc   2         2         2       128m
+```
+See the difference now.
+* Two new pod status changed to 'running' (28s). 
+* At the same time, one more container termination started. 
+* Have a close watch on available, ready, desired, current status along with its numbers.
+* Now the newly created replicaset has two pods running on it. 
+
+Hope you are getting what is happening during the upgrade?
+
+**Did you notice at any given point in time minimum of four pods were running. So at any given time, we will have four pods to serve the application.**
+{: style="text-align: justify;"}
+**This means the end-users are unaffected during the application upgrade.**
+{: .notice--success}
+{: style="text-align: justify;"}
+
+```markdown	
+rajith@k8s-master:~$ kubectl get pods,deployment,rs
+NAME                                    READY   STATUS    RESTARTS   AGE
+pod/nginx-deployment-5dfc477cf8-4s74w   1/1     Running   0          28s
+pod/nginx-deployment-5dfc477cf8-75fxk   1/1     Running   0          52s
+pod/nginx-deployment-5dfc477cf8-crtwr   1/1     Running   0          26s
+pod/nginx-deployment-5dfc477cf8-kfj29   1/1     Running   0          52s
+pod/nginx-deployment-5dfc477cf8-qjcgd   1/1     Running   0          52s
+
+NAME                               READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/nginx-deployment   5/5     5            5           129m
+
+NAME                                          DESIRED   CURRENT   READY   AGE
+replicaset.apps/nginx-deployment-5dfc477cf8   5         5         5       52s
+replicaset.apps/nginx-deployment-65587f96cc   0         0         0       129m
 rajith@k8s-master:~$ 
 ```
-Verify the deployment status.
+Now all the five pods started running. The old replicaset doesn't have any pods on it. The new replicaset has five pods running on it.
+{: style="text-align: justify;"}
+
+Upgrade completed successfully. But how do we confirm the pods are running with the new image?
+
+```markdown
+rajith@k8s-master:~$ kubectl get replicasets -o wide
+NAME                          DESIRED   CURRENT   READY   AGE     CONTAINERS   IMAGES         SELECTOR
+nginx-deployment-5dfc477cf8   5         5         5       124m    nginx        nginx:1.16.1   app=nginx-deployment,pod-template-hash=5dfc477cf8
+nginx-deployment-65587f96cc   0         0         0       4h12m   nginx        nginx:1.14.2   app=nginx-deployment,pod-template-hash=65587f96cc
+rajith@k8s-master:~$
+```
+Have a look at the 8th field, the 'IMAGES' and the number of the running pod in each replicasets.
+
+## Scale down the number of deployment to 3.
+
+No difference, the same way we scaled up the deployment.
 {: style="text-align: justify;"}
 ```markdown
-rajith@k8s-master:~$ kubectl get deployments
-NAME               READY   UP-TO-DATE   AVAILABLE   AGE
-nginx-deployment   0/3     3            0           6m1s
+rajith@k8s-master:~$ kubectl scale deployment nginx-deployment --replicas=3 
+deployment.apps/nginx-deployment scaled
 rajith@k8s-master:~$ 
 ```
 
-This is not a usual behaviour, we will see the status of Pod.
+Now you would be able to understand the output. No explanation needed from me.
 {: style="text-align: justify;"}
 ```markdown
+rajith@k8s-master:~$ kubectl get pods
+NAME                                READY   STATUS        RESTARTS   AGE
+nginx-deployment-5dfc477cf8-4s74w   1/1     Running       0          129m
+nginx-deployment-5dfc477cf8-75fxk   0/1     Terminating   0          129m
+nginx-deployment-5dfc477cf8-crtwr   0/1     Terminating   0          129m
+nginx-deployment-5dfc477cf8-kfj29   1/1     Running       0          129m
+nginx-deployment-5dfc477cf8-qjcgd   1/1     Running       0          129m
+rajith@k8s-master:~$ kubectl get rs
+NAME                          DESIRED   CURRENT   READY   AGE
+nginx-deployment-5dfc477cf8   3         3         3       129m
+nginx-deployment-65587f96cc   0         0         0       4h18m
 rajith@k8s-master:~$ kubectl get pods
 NAME                                READY   STATUS    RESTARTS   AGE
-my-first-pod                        1/1     Running   1          46h
-nginx-deployment-66b6c48dd5-98ksg   0/1     Pending   0          6m15s
-nginx-deployment-66b6c48dd5-bkwj6   0/1     Pending   0          6m15s
-nginx-deployment-66b6c48dd5-rlqjk   0/1     Pending   0          6m15s
+nginx-deployment-5dfc477cf8-4s74w   1/1     Running   0          129m
+nginx-deployment-5dfc477cf8-kfj29   1/1     Running   0          129m
+nginx-deployment-5dfc477cf8-qjcgd   1/1     Running   0          129m
+rajith@k8s-master:~$ kubectl get deployments
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+nginx-deployment   3/3     3            3           4h18m
 rajith@k8s-master:~$ 
 ```
-The pod is in the pending state, there is something unusual in the cluster. **Went through the logs and identified that the worker node had some issue.** 
-{: style="text-align: justify;"}
-Here , the worker nodes status is "NotReady".
-{: style="text-align: justify;"}
+## Destroy the deployment.
 
-```markdown
-rajith@k8s-master:~$ kubectl get nodes
-NAME         STATUS     ROLES                  AGE   VERSION
-k8s-master   Ready      control-plane,master   23d   v1.21.1
-node-1       NotReady   <none>                 23d   v1.21.1
-node-2       NotReady   <none>                 23d   v1.21.1
-node-3       NotReady   <none>                 23d   v1.21.1
-rajith@k8s-master:~$
-```
-Corrected the issue for "node-1" and node-2", you can see those node's status changed to "Ready".
+We will do the cleanup.
 {: style="text-align: justify;"}
-
-```markdown
-rajith@k8s-master:~$ kubectl get nodes
-NAME         STATUS     ROLES                  AGE   VERSION
-k8s-master   Ready      control-plane,master   23d   v1.21.1
-node-1       Ready      <none>                 23d   v1.21.1
-node-2       Ready      <none>                 23d   v1.21.1
-node-3       NotReady   <none>                 23d   v1.21.1
-rajith@k8s-master:~$
-```
-Now we will see the status of those Pods.
-{: style="text-align: justify;"}
-```markdown
-rajith@k8s-master:~$ kubectl get pods
-NAME                                READY   STATUS              RESTARTS   AGE
-my-first-pod                        1/1     Running             1          46h
-nginx-deployment-66b6c48dd5-98ksg   0/1     ContainerCreating   0          10m
-nginx-deployment-66b6c48dd5-bkwj6   0/1     ContainerCreating   0          10m
-nginx-deployment-66b6c48dd5-rlqjk   0/1     ContainerCreating   0          10m
-rajith@k8s-master:~$ 
-```
-It changed to "ContainerCreating ".We will see whether the pod has started or not.
-{: style="text-align: justify;"}
-```markdown
+```yaml
+rajith@k8s-master:~$ kubectl delete deployments nginx-deployment
+deployment.apps "nginx-deployment" deleted
 rajith@k8s-master:~$ kubectl get pods
 NAME                                READY   STATUS        RESTARTS   AGE
-my-first-pod                        1/1     Terminating   1          47h
-nginx-deployment-66b6c48dd5-98ksg   1/1     Running       0          100m
-nginx-deployment-66b6c48dd5-bkwj6   1/1     Running       0          100m
-nginx-deployment-66b6c48dd5-rlqjk   1/1     Running       0          100m
+nginx-deployment-5dfc477cf8-4s74w   0/1     Terminating   0          150m
+nginx-deployment-5dfc477cf8-qjcgd   0/1     Terminating   0          150m
+rajith@k8s-master:~$ kubectl get rs
+No resources found in default namespace.
+rajith@k8s-master:~$ kubectl get pods
+NAME                                READY   STATUS        RESTARTS   AGE
+nginx-deployment-5dfc477cf8-4s74w   0/1     Terminating   0          150m
+nginx-deployment-5dfc477cf8-qjcgd   0/1     Terminating   0          150m
+rajith@k8s-master:~$ kubectl get deployments
+No resources found in default namespace.
+rajith@k8s-master:~$ kubectl get pods
+No resources found in default namespace.
+rajith@k8s-master:~$ kubectl get rs
+No resources found in default namespace.
 rajith@k8s-master:~$ 
 ```
-You can see the Pods created by the "nginx-deployment"  is in a running state. However, the other Pod is "Terminating". 
+Pods, replicaset, deployment, everything deleted.
 {: style="text-align: justify;"}
-**Actually, I did not have the plan to share these details in this module. This should have been covered in the troubleshooting session. While preparing this document my cluster node had some real-time issue so I thought of sharing those things also with you.** Still, you can see the other Pod has some issue. That was expected when all the worker nodes are not ready it should have been in dead state but it took some time to reflect it. 
+We have a lot more to cover in deployment. We will cover those topics in another series.
 {: .notice--success}
 {: style="text-align: justify;"}
-Anyway, we reached here, we take a few more step ahead. 
-{: style="text-align: justify;"}
-In the previous output we saw that only two worker nodes are "Ready", so the deployment should place the pods only to those two nodes, but how we will see the Pod distribution? Hope you remember the "-o wide" option which we used ? 
-{: style="text-align: justify;"}
-```markdown
-rajith@k8s-master:~$ kubectl get pods -o wide
-NAME                                READY   STATUS        RESTARTS   AGE    IP          NODE     NOMINATED NODE   READINESS GATES
-my-first-pod                        1/1     Terminating   1          47h    10.32.0.2   node-3   <none>           <none>
-nginx-deployment-66b6c48dd5-98ksg   1/1     Running       0          114m   10.38.0.3   node-2   <none>           <none>
-nginx-deployment-66b6c48dd5-bkwj6   1/1     Running       0          114m   10.38.0.1   node-2   <none>           <none>
-nginx-deployment-66b6c48dd5-rlqjk   1/1     Running       0          114m   10.38.0.2   node-2   <none>           <none>
-rajith@k8s-master:~$ 
-```
 
-Here you can see all the pods are placed on "node-2" .
-{: style="text-align: justify;"}
-The reason is node-3 is anyway not ready.  First I corrected the issue of node-02, immediately after node-2 is ready the deployment controller started placing the Pods on that node. So Even if the "node-1" is ready the Pods are already placed on node-2.  So deployment controller will not relocate the Pod at this moment.
-{: style="text-align: justify;"}
-**Now the chances of placing the Pod by this deployment controller is Listed below.**
-{: style="text-align: justify;"}
-* If there is any new addition ( scale-up ) 
-* Recreation or during the upgrade.
-* In case of any Pod termination within the deployment. 
-
+**In the next module, we will discuss the Kubernetes service.**
 {: style="text-align: justify;"}
 
-We will see the third possibility in action.
-{: style="text-align: justify;"}
-```markdown
-rajith@k8s-master:~$ kubectl get pods
-NAME                                READY   STATUS        RESTARTS   AGE
-my-first-pod                        1/1     Terminating   1          2d
-nginx-deployment-66b6c48dd5-98ksg   1/1     Running       0          132m
-nginx-deployment-66b6c48dd5-bkwj6   1/1     Running       0          132m
-nginx-deployment-66b6c48dd5-rlqjk   1/1     Running       0          132m
-rajith@k8s-master:~$ 
-```
-I am going to delete the Pod "pod nginx-deployment-66b6c48dd5-98ksg"
-{: style="text-align: justify;"}
-
-```markdown
-rajith@k8s-master:~$ kubectl delete pod nginx-deployment-66b6c48dd5-98ksg
-pod "nginx-deployment-66b6c48dd5-98ksg" deleted
-rajith@k8s-master:~$ 
-```
-The Pod is deleted, will see the status once again. 
-{: style="text-align: justify;"}
-
-```markdown
-rajith@k8s-master:~$ kubectl get pod 
-NAME                                READY   STATUS        RESTARTS   AGE
-my-first-pod                        1/1     Terminating   1          2d
-nginx-deployment-66b6c48dd5-bkwj6   1/1     Running       0          135m
-nginx-deployment-66b6c48dd5-rlqjk   1/1     Running       0          135m
-nginx-deployment-66b6c48dd5-s6pn4   1/1     Running       0          50s
-rajith@k8s-master:~$
-```
-You can see another Pod named "nginx-deployment-66b6c48dd5-s6pn4" is automatically created and it is Running for the 50s. This means the deployment has the auto-healing capability. We no need to create the pod manually.
-{: style="text-align: justify;"}
-
-```markdown
-We will see where it is placed?
-rajith@k8s-master:~$ kubectl get pod -o wide |grep nginx
-nginx-deployment-66b6c48dd5-bkwj6   1/1     Running       0          144m    10.38.0.1    node-2   <none>           <none>
-nginx-deployment-66b6c48dd5-rlqjk   1/1     Running       0          144m    10.38.0.2    node-2   <none>           <none>
-nginx-deployment-66b6c48dd5-s6pn4   1/1     Running       0          9m47s   10.40.0.11   node-1   <none>           <none>
-rajith@k8s-master:~$ 
-```
-It is placed on node-1.
-
-We came lots of steps ahead of what we thought of discussing here. There are lot more to cover, those points will be cover in another series. 
-{: style="text-align: justify;"}
-
-
-**I thought of covering a demo here however, the topic went for a long so giving a small pause here.In the next module we will cover the demo with the below steps.**
-
-* Creating a Kubernetes deployment.
-* Verify the pods replicaset and deployment created with the above step.
-* Verify the deployment details.
-* Scale the number of pod to 5.
-* Verify the rollout status.
-* Upgrade the application/container image version.
-* scale down the number of deployment to 3.
-* Destroy the deployment.
-{: .notice--success}
 {: style="text-align: justify;"}
 
 <div markdown="0"><a href="#" class="btn btn--success">Go back to the Top of the page </a></div>

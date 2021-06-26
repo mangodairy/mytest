@@ -112,9 +112,6 @@ We will have a detailed discussion on deployment in a later module which is spec
 {: style="text-align: justify;"}
 
 
-## Different Types of Pods 
-
-
 ## Creating the Deployment.
 
 As mentioned in the Pod, there are two methods to create a Deployment.
