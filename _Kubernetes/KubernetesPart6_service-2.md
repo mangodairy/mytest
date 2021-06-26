@@ -45,6 +45,9 @@ No resources found in default namespace.
 rajith@k8s-master:~$ 
 ```
 In the current setup, we have only one service that is the default service coming along with the Kubernetes implementation. 
+
+## Walk through the definition files.
+
 We will have a look at our service and deployment definition files.
 {: style="text-align: justify;"}
 
@@ -74,7 +77,7 @@ spec:
 rajith@k8s-master:~$ 
 ```
 We are already familiar with the deployment definition file. We used the same during our demo for [deployment.](https://rajith.in/Kubernetes/KubernetesPart5_Deployment-2/). If you need any clarification please have a look at it. 
-> One additional point to be noted here is the 'labels'.  The label which we defined here should match with the 'selector' in the service definition file.
+> One additional point to be noted is the 'labels'.  The label which we defined here should match with the 'selector' in the service definition file.
 > Another important point is the 'containerPort' defined in the deployment should match with the 'targetPort' in the service definition file.
 {: style="text-align: justify;"}
 
@@ -111,7 +114,7 @@ Make sure,
 * The 'selector' in the service definition file matches with 'labels' in the deployment.
 * The 'targetPort' in the service definition file matches with the  'containerPort' defined in the deployment.
 
-
+## Create the deployment
 That's it for now, we will create the deployment first. 
 {: style="text-align: justify;"}
 
@@ -142,6 +145,8 @@ NAME            TYPE       CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
 nginx-service   NodePort   10.99.197.69   <none>        80:30007/TCP   17s
 rajith@k8s-master:~$
 ```
+
+## Inspect the service 
 The 'nginx-service' created. We need some detailed view of the service before going further. 
 
 ```markdown
@@ -212,6 +217,8 @@ Now our setup is ready. The Nginx application exposed outside the cluster. How d
 For that, you need to understand my lab setup. 
 {: style="text-align: justify;"}
 
+## Undersrand the lab setup
+
 I am running this setup on my laptop in a virtual box installed on it. You can see the IP mapping from the below commands.
 {: .notice--info}
 {: style="text-align: justify;"}
@@ -257,6 +264,13 @@ rajith@k8s-master:~$
 
 Pods are running on node-2 and node-3. The corresponding IP is '192.168.50.12' and '192.168.50.13'. We will see this IP from my laptop browser. 
 {: style="text-align: justify;"}
+
+{% include figure image_path="/assets/images/unsplash-image-10.jpg" alt="Image 1" caption="What happened? the Nginx welcome page is not showing!" %}
+<figure>
+  <img src="/assets/images/kuberneties/Introduction/Service/Service-01.png" alt="Image 1">
+  <figcaption>What happened? the Nginx welcome page is not showing!</figcaption>
+</figure>
+
 <div markdown="0"><a href="#" class="btn btn--success">Go back to the Top of the page </a></div>
 
 
