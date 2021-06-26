@@ -1,6 +1,6 @@
 ---
 title: "What is a Service?"
-excerpt: "In this module, we will go through the basics of Deployment and create deployment."
+excerpt: "IMake the application access to the external world through the Kubernetes service."
 header:
   overlay_color: "#80aaff              "
   teaser: /assets/images/kuberneties/Day6.png
@@ -43,10 +43,14 @@ It allows exposing the application running on a pod/deployment to,
 * ClusterIP (default type)
 * NodePort
 * LoadBalancer
+
 ## ClusterIP
-We will be having some situations like we need the application container to reach the DB service. It happens within the cluster. We do not need the DB port to be accessible to the external user. In this scenario, we can make use of the clusterIP. Exposes the DB/application port to its internal IP. ClusterIP is the default ServiceType in Kubernetes. 
+
+We will be having some situations like we need the application container to reach the DB service. It happens within the cluster. We do not need the DB port to be accessible to the external user. In this scenario, we can make use of the clusterIP. Exposes the DB/application port to its internal IP. ClusterIP is the default ServiceType in Kubernetes.
 {: style="text-align: justify;"}
+
 ## NodePort
+
 The default Kubernetes service(ClusterIP) exposes the port within the cluster. What if we need access to the application outside? NodePort service makes the application visible outside the Kubernetes cluster.
 You'll be able to contact the NodePort outside the cluster. You can specify the <NodeIP>:<NodePort> to access the exposed port.
 NodePort ranges (typically 30000–32767 ) 
