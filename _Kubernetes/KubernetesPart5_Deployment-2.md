@@ -28,7 +28,7 @@ toc_sticky: true
 In the previous module, we saw how to create the deployment using a pod definition file. Here along with the demo, we will create the deployment with "imperative command". 
 {: style="text-align: justify;"}
 
-## create the deployment with imperative command
+## Create the deployment with imperative command
 
 The below command does the same action it performed in the previous module using the declarative method.
 {: style="text-align: justify;"}
