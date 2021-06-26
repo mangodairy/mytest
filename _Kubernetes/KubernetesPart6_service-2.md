@@ -297,9 +297,97 @@ Try accessing 192.168.50.12:30007.
 </figure>
 
 **Yes,  that also works. Perfect all good 👍.**
-{: style="text-align: justify;"}
-Final-output.png  Service-01.png  Service-masternode.png  Service-node01.png  Service-node02.png  Service-node03.png
 
+
+{: style="text-align: justify;"}
+<figure>
+  <img src="/assets/images/kuberneties/Introduction/Service/Service-node01.png" alt="Image 2">
+  <figcaption>node-1 with the IP and port "http://192.168.50.11:30007" </figcaption>
+</figure>
+
+
+We will try accessing with the node-01 IP. "192.168.50.11:30007". 
+{: style="text-align: justify;"}
+**That also gives the welcome page!!🤔**
+{: style="text-align: justify;"}
+
+
+Let me try the master node "192.168.50.10:30007. 
+{: style="text-align: justify;"}
+<figure>
+  <img src="/assets/images/kuberneties/Introduction/Service/Service-masternode.png" alt="Image 2">
+  <figcaption>master node with the IP and port "http://192.168.50.10:30007" </figcaption>
+</figure>
+
+
+**That is also showing the same!! 😇** 
+{: style="text-align: justify;"}
+What's happening? The pods are started only on node-2 and node-3. But all the nodes includes the master node IP showing the 'Nginx welcome page' ??
+{: style="text-align: justify;"}
+
+**Are we doing something wrong? 😫**
+{: style="text-align: justify;"}
+
+**No, that's how the NodePort service designed to work. It serves through all the nodes IP. There is an internal forwarding.**
+We will discuss this in another series.
+{: .notice--success}
+{: style="text-align: justify;"}
+
+Hope, you are with me. We will delete the service and see what happens. 
+{: style="text-align: justify;"}
+
+```markdown
+rajith@k8s-master:~$ kubectl delete service nginx-service 
+service "nginx-service" deleted
+rajith@k8s-master:~$ kubectl get service
+NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   24d
+rajith@k8s-master:~$ kubectl get pods -o wide
+NAME                                READY   STATUS    RESTARTS   AGE   IP          NODE     NOMINATED NODE   READINESS GATES
+nginx-deployment-5dfc477cf8-jqn6q   1/1     Running   0          53m   10.32.0.3   node-3   <none>           <none>
+nginx-deployment-5dfc477cf8-vk8w4   1/1     Running   0          53m   10.32.0.2   node-3   <none>           <none>
+nginx-deployment-5dfc477cf8-zvflg   1/1     Running   0          53m   10.38.0.1   node-2   <none>           <none>
+rajith@k8s-master:~$ 
+```
+ 
+Service is deleted but pods are running. We will see the application available through the browser. 
+{: style="text-align: justify;"}
+
+<figure>
+  <img src="/assets/images/kuberneties/Introduction/Service/Final-output.png" alt="Image 2">
+  <figcaption>node-2 with the IP and port "http://192.168.50.12:30007" </figcaption>
+</figure>
+
+
+No, the "Nginx welcome page" is not available now. 
+Even if the pods are running, we need the service to access the application externally.
+{: style="text-align: justify;"}
+
+## We will do the cleanup.
+
+```markdown
+rajith@k8s-master:~$ kubectl get deployments,rs,pods,svc 
+NAME                               READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/nginx-deployment   3/3     3            3           3h45m
+
+NAME                                          DESIRED   CURRENT   READY   AGE
+replicaset.apps/nginx-deployment-5dfc477cf8   3         3         3       3h45m
+
+NAME                                    READY   STATUS    RESTARTS   AGE
+pod/nginx-deployment-5dfc477cf8-jqn6q   1/1     Running   0          3h45m
+pod/nginx-deployment-5dfc477cf8-vk8w4   1/1     Running   0          3h45m
+pod/nginx-deployment-5dfc477cf8-zvflg   1/1     Running   0          3h45m
+
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   25d
+rajith@k8s-master:~$ kubectl delete -f nginx-deployment.yaml
+deployment.apps "nginx-deployment" deleted
+rajith@k8s-master:~$ 
+```
+
+**Now we got a clear idea of how the Kubernetes service works and how it's related to the other components in the cluster.**
+{: .notice--success}
+{: style="text-align: justify;"}
 <div markdown="0"><a href="#" class="btn btn--success">Go back to the Top of the page </a></div>
 
 
