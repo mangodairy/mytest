@@ -41,7 +41,7 @@ kubectl create deployment nginx-deployment --image=nginx:1.14.2 --replicas=3
 * With the Nginx image version "nginx:1.14.2".
 * The name of the container will be "nginx".
 * The Pod listen to the port "80".
-{: style="text-align: justify;"}
+
 
 
 ## Perform the cleanup.
