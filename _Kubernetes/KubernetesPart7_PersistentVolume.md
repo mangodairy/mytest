@@ -86,6 +86,8 @@ rajith@k8s-master:~$
 The pod got created and it started.
 {: .notice--success}
 {: style="text-align: justify;"}
+
+### Connect to the pod in the Kubernetes cluster
 To connect to the pod in the Kubernetes cluster we use the command " kubectl exec".
 {: style="text-align: justify;"}
 ```markdown
@@ -100,7 +102,7 @@ test-data
 We connected to the pod. The hostname of the pod is 'test-data'
 {: style="text-align: justify;"}
 
-
+### Place data to test.
 We will create a directory and place some data on it.
 {: style="text-align: justify;"}
 
@@ -124,6 +126,8 @@ NAME        READY   STATUS    RESTARTS   AGE
 test-data   1/1     Running   0          2m56s
 rajith@k8s-master:~$ 
 ```
+
+### Delete and recreate the pod.
 The pod 'test-data' is still running.Delete and recreate it.
 {: style="text-align: justify;"}
 
@@ -149,6 +153,8 @@ rajith@k8s-master:~$
 ```
 The data directory itself is not available. 
 {: style="text-align: justify;"}
+
+### create the pod with volume.
 
 We will create the pod 'test-data' with the pod definition file given below.
 {: style="text-align: justify;"}
@@ -191,6 +197,7 @@ rajith@k8s-master:~$ kubectl create -f TestData.yaml
 Error from server (AlreadyExists): error when creating "TestData.yaml": pods "test-data" already exists
 rajith@k8s-master:~$ 
 ```
+
 What happened? 🤔 Yes, we did not delete the pod 'test-data'.
 {: style="text-align: justify;"}
 
@@ -211,6 +218,8 @@ NAME        READY   STATUS    RESTARTS   AGE
 test-data   1/1     Running   0          8s
 rajith@k8s-master:~$
 ```
+
+### Place the data under the volume.
 
 Connect to the pod 'test-data'.
 {: style="text-align: justify;"}
@@ -263,6 +272,8 @@ total 4
 My data to Test the Persistency
 /data # 
 ```
+### Recreate the pod with the volume.
+
 Now the files are placed under the pod 'test-data'. We will recreate the pod. 
 {: style="text-align: justify;"}
 
@@ -277,6 +288,7 @@ NAME        READY   STATUS    RESTARTS   AGE
 test-data   1/1     Running   0          8s
 rajith@k8s-master:~$
 ```
+### Connect to the pod and verify the data
 
 The pod 'test-data' is recreated. We will connect to it and verify the data.
 {: style="text-align: justify;"}
@@ -301,7 +313,7 @@ My data to Test the Persistency
 /data # 
 ```
 
-Yes, it is there.So this is how we will preserve the data. 
+Yes, it is there.This is how we will preserve the data. 
 {: .notice--success}
 {: style="text-align: justify;"}
 
@@ -329,7 +341,7 @@ If you need relocatable pods then you need to choose the other solutions which s
 {: .notice--danger}
 {: style="text-align: justify;"}
 
-
+## Persistent Volume definition file
 We will have a look at the persistent volume definition file.
 {: style="text-align: justify;"}
 
@@ -354,6 +366,7 @@ This defenition file is self explnatory.
 * The capacity is 10Mi.
 * The host path is "/mnt/data".
 
+## Create the Persistent Volume
 We will create the Persistent volume.
 
 ```markdown
