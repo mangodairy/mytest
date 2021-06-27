@@ -16,6 +16,8 @@ So what are you waiting for? 10 minutes in a day is just the time you normally t
 {: .notice--info}
 {: style="text-align: justify;"}
 
+{% include advertising.html %}
+
 I found time to prepare all this documentation by avoiding chat in a few of my favourite whatsup group. So no doubt you can make it too!
 {: .notice--success}
 {: style="text-align: justify;"}
