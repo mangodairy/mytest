@@ -44,8 +44,8 @@ It is,
 
 When you are looking into Kubernetes from an infrastructure perspective you should have a basic understanding of the below-listed items. Without the basic knowledge of this, your journey will be difficult.
 {: style="text-align: justify;"}
-* Basic understanding of Docker
-* Familiar with Linux command line operation.
+* Basic understanding of Docker.
+* Familiar with Linux command line operations.
 * Basic idea about the networking concepts.
 {: style="text-align: left;"}
 ## What is Kubernetes?

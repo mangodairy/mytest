@@ -59,8 +59,8 @@ rajith@k8s-master:~$
 
 
 Use "**kubectl cluster-info**" command to display the addresses of the control plane and the cluster services. This will give an idea on which IP the API server bounded to and which port it is listening etc.
-### Display addresses of the master and services
-```markdown
+### Display the addresses of the master node and services
+```yaml
 rajith@k8s-master:~$ kubectl cluster-info
 Kubernetes control plane is running at https://192.168.50.10:6443
 CoreDNS is running at https://192.168.50.10:6443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
@@ -76,6 +76,9 @@ rajith@k8s-master:~$
 We had quick look at the server,now we will have a look at control-plane components. 
 
 **Before that, we will understand a few concepts and commands.**
+If you find it hard to understand the below points, don't worry. Skip those points and go on. These are here to give an overview of the command combination we used below. We are discussing it in detail later.
+{: .notice--info}
+{: style="text-align: justify;"}
 
 * The command 'kubectl get pods' display the pods running on a k8s cluster.
 * The Kubernetes environment is further isolated with a concept called a namespace. We will have a detailed study on it later.
@@ -86,15 +89,13 @@ We had quick look at the server,now we will have a look at control-plane compone
 * The static pod will be suffixed with the node name in which they started.
 * The control plane components are placed under the namespace called 'kube-system' .
 
-Ohh !!! We explained a lot !!!!!!!!!!!!  don't worry. I explained all these to make a simple command filtering combination to list only the control-plane components. All these concepts are discussed later in their own session.
-{: .notice--info}
-{: style="text-align: justify;"}
 
-We got all the required details to filter only the control-plane components. 
-We will make the command. It is ,
+We got all the details to filter the control-plane components. 
+We will form the command from it.
 
-**kubectl get pods -n kube-system  |grep master**
-
+```yaml
+kubectl get pods -n kube-system  |grep master
+```
 Will execute it on a server and see the result.
 
 ```markdown
@@ -105,7 +106,7 @@ kube-controller-manager-k8s-master   1/1     Running   7          15d
 kube-scheduler-k8s-master            1/1     Running   7          15d
 rajith@k8s-master:~$ 
 ```
-Now go back and look at the name of the components we discussed and compare it with the above command output.
+Now go back and look at the name of the components we discussed and compare it with the above output.
 
 * [kube-apiserver](https://kubernetes.io/docs/concepts/overview/components/#kube-apiserver)
 * [etcd](https://kubernetes.io/docs/concepts/overview/components/#etcd)
