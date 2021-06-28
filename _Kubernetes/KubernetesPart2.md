@@ -73,7 +73,7 @@ rajith@k8s-master:~$
 
 ### List the Control Plane Components
 
-We had quick look at the server,now we will have a look at control-plane components. 
+We had a quick look at the server. Now let us have a look at the control-plane components. 
 
 **Before that, we will understand a few concepts and commands.**
 If you find it hard to understand the below points, don't worry. Skip those points and go on. These are here to give an overview of the command combination we used below. We are discussing it in detail later.
