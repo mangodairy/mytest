@@ -94,7 +94,7 @@ analytics:
 author:
   name             : "Rajith P"
   #avatar           : "/assets/images/bio-photo.jpg"
-  bio              : "This site is under construction, currently in testing phase content may change soon."
+  bio              : "My blog posts."
   location         : "Kerala"
   links:
      #- label: "Your Website"

@@ -386,6 +386,8 @@ A persistent volume looks like this. If we need to utilize it,  we need to creat
 {: .notice--success}
 {: style="text-align: justify;"}
 
+<script data-ad-client="ca-pub-3571483507017585" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
 <div markdown="0"><a href="#" class="btn btn--success">Go back to the Top of the page </a></div>
 
 
