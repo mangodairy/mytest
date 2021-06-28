@@ -41,7 +41,7 @@ In the previous chapter, we went through the [control-plane components.](https:/
 
 If you are interested to see the definition of each component, please refer to the official documentation. For ease of access, I have given the corresponding link.
 
-**To see the implementation of those components in the k8s cluster, we will go through each of them. *
+**To see the implementation of those components in the k8s cluster, we will go through each of them. **
 {: style="text-align: justify;"}
 ## We will Walk Through the Server
 
