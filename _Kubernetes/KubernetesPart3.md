@@ -39,9 +39,9 @@ In the previous chapter, we went through the [control-plane components.](https:/
 * [kube-proxy](https://kubernetes.io/docs/concepts/overview/components/#kube-proxy)
 * [Container runtime](https://kubernetes.io/docs/concepts/overview/components/#container-runtime)
 
-If you are interested to see the definition of each component please refer to the official documentation, for ease of access I have given the corresponding link.
+If you are interested to see the definition of each component, please refer to the official documentation. For ease of access, I have given the corresponding link.
 
-**To see what it is and how it is implemented in the k8s cluster we will go through each component.**
+**To see the implementation of those components in the k8s cluster, we will go through each of them. *
 {: style="text-align: justify;"}
 ## We will Walk Through the Server
 
@@ -51,21 +51,29 @@ In the previous chapter, before filtering the master node components we went thr
 {: .notice--info}
 {: style="text-align: justify;"}
 
-**If you remeber those points we will add few more points here to understand it better.**
+**If you remember those points, we will add few more points here to understand them better.**
 
-* Like pod, there is another 'kind' available in k8s called daemonset.
-* It can be listed with the command  "kubectl get daemonsets".
-* There is an option available with the get command that is "-o wide " with the help of it we will get more details of the given command.
+
+* Like pod, there is another ‘kind’ available in k8s called daemonset.
+* It can be viewed with the command “kubectl get daemonsets”.
+* There is an option available with the get command that is “-o wide “. With this option, we will get more details of it.
 
 ### [kube-proxy](https://kubernetes.io/docs/concepts/overview/components/#kube-proxy)
 
-kube-proxy is a network proxy that runs on each cluster node including the master node, each node will have one set of kube-proxy running on it. This is achieved through daemonset which will discuss later in detail. Since it is maintained with the help of daemonset if we add additional nodes to the cluster we no need to deploy the kube-proxy on that node daemonset will take care of it and add a new pod in the node.
+Kube-proxy is a network proxy that runs on each cluster node includes the master node. Each node will have one set of Kube-proxy running on it. Kube-proxy implemented with the help of a daemonset. 
+{: style="text-align: justify;"}
 
-Now we have the required details to filter only the kube-proxy from the cluster.We will make the command.
+Daemonset ensures one pod is running on each cluster node. If there is any addition of node, it takes care of adding the new pod on it. 
 {: .notice--info}
 {: style="text-align: justify;"}
 
-**kubectl get pods -n kube-system  |grep master**
+Now we have the required details to filter only the kube-proxy from the cluster.We will make the command.
+{: .notice--success}
+{: style="text-align: justify;"}
+
+```yaml
+    kubectl get pods -n kube-system  |grep master
+```
 
 Will execute it on a server and see the result.
 
@@ -77,9 +85,9 @@ kube-proxy-lpvws                     1/1     Running   7          16d
 kube-proxy-n9phj                     1/1     Running   7          16d
 kube-proxy-vkdvx                     1/1     Running   7          16d
 ```
-In the command output you can see there are four kube-proxy runnings on this cluster, it is a four-node cluster including the master node. But how we will see the pods are distributed across the nodes?
+In the command output, you can see four Kube-proxy runnings on this cluster. It is a four-node cluster that includes the master node. But how do we see the pods distributed across the nodes?
 
-You remember we were discussing an option "-o wide" we will try it with the above command to see how the output will look like.
+Did you remember we discussed an option "-o wide"?  We will try it with the above command to see how the output looks.
 {: .notice--info}
 {: style="text-align: justify;"}
 ```markdown
@@ -90,11 +98,11 @@ kube-proxy-n9phj                     1/1     Running   7          16d   192.168.
 kube-proxy-vkdvx                     1/1     Running   7          16d   192.168.50.10   k8s-master   <none>           <none>
 rajith@k8s-master:~$ 
 ```
-See the 6th and 7th column you can see the server IP address and the hostname respectively. Please have a close look, you will notice that each kube-proxy pod is running on each node of the cluster. That is what we discussed sometime back.
+See the 6th and 7th column. You can see the server IP address and the hostname, respectively. Please have a close look. You will notice that each Kube-proxy pod is running on each node of the cluster. That is what we discussed sometime back.
 {: .notice--info}
 {: style="text-align: justify;"}
 
-But with the above command we listed only pod then what is 'daemonset'? . These pods are created with the help of a 'daemonset' we will see that.
+But with the above command, we listed only the pods, then what is 'daemonset'? These pods created with the help of a 'daemonset'. We will see that shortly.
 We will execute the command which we discussed as the second point. *"kubectl get daemonsets"*
 
 ```markdown
@@ -104,8 +112,8 @@ kube-proxy   4         4         4       4            4           kubernetes.io/
 weave-net    4         4         4       4            4           <none>                   16d
 rajith@k8s-master:~$ 
 ```
-You can see that there are two 'daemonset' out of which one is 'kube-proxy' that's what we are looking for. The other one 'weave-net' we will discuss it shortly.
-
+You can see that there are two ‘daemonset’ out of which one is ‘Kube-proxy’ that’s what we are looking for. The other one, ‘weave-net’, will discuss shortly.
+{: style="text-align: justify;"}
 ### [kubelet](https://kubernetes.io/docs/concepts/overview/components/#kubelet)
 
 Kubelet is an agent that runs on each node in the cluster. It makes sure that containers are running. Unlike other components, kubelet is running as a service in each server. Let's have a look at it.
@@ -127,14 +135,15 @@ rajith@node-1:/$ systemctl status kubelet
 Warning: some journal files were not opened due to insufficient permissions.
 rajith@node-1:/$
 ```
-This is a Linux command, the warning shows because I am running it as a noon-root user. Ignore it for now.
+It is a Linux command. The warning shows because I am running it as a non-root user. Ignore it for now.
 {: .notice--info}
 {: style="text-align: justify;"}
 
 
 ### [Container runtime](https://kubernetes.io/docs/concepts/overview/components/#container-runtime)
 
-The container runtime is the software that is responsible for running containers. Kubernetes supports several container runtimes like Docker,containerd,CRI-O etc. In my current setup I am using docker as container runtime. Like, kubelet docker also running a Linux service. Let’s have a look at it.
+The container runtime is the software that is responsible for running containers. Kubernetes supports several container runtimes like docker, container, CRI-O etc. In my current setup, I am using docker as the container runtime. Like, kubelet docker also running a Linux service. Let’s have a look at it.
+{: style="text-align: justify;"}
 
 ```yaml
 root@node-1:~# systemctl status docker
@@ -161,18 +170,18 @@ Jun 18 02:22:43 node-1 dockerd[711]: time="2021-06-18T02:22:43.962407443Z" level
 Jun 18 02:23:08 node-1 dockerd[711]: time="2021-06-18T02:23:08.525253826Z" level=warning msg="Your kernel does not support swap limit capabilities or the cgroup is not mounted. Memory limited without sw>
 root@node-1:~#
 ```
-Now I ran this command as the root user, you can see the previous warning has gone and lots of other message and warning came, at this stage, we are not much worried about those messages and warnings.
+Now I ran this command as the root user. You can see the previous warning has gone, lots of other message and warning came, at this stage, we are not much worried about those messages and warnings.
 {: .notice--info}
 {: style="text-align: justify;"}
 
 
 ## Addons
 
-The components already discussed are the core components needed for Kubernetes to work, there are few more components needed for the smooth functioning of  Kubernetes we will go through it.
+The components already discussed are the core components needed for Kubernetes to work. There are few more components required for the smooth functioning of Kubernetes. We will go through it.
 {: style="text-align: justify;"}
 
 ### [CoreDNS](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#coredns)
-Even though the DNS is considered as addons this is one of the mandatory requirements. You can choose your own DNS, by default [CoreDNS](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#coredns) come along with the "kubeadm" implementation. As the name implies it is for DNS, I think it doesn't need an explanation.
+Even though the DNS considered as an addon., it is one of the mandatory requirements. You can select your own DNS. By default, [CoreDNS](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/#coredns)  come along with the “kubeadm” implementation. As the name implies, it is for DNS. I think it doesn’t need an explanation.
 
 #### Pod associated with CoreDNS
 ```markdown
@@ -198,10 +207,10 @@ NAME       TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                  AGE
 kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   18d
 rajith@k8s-master:~$ 
 ```
-This is how the CoreDNS is implemented on a cluster, 
+This is how the CoreDNS implemented on a cluster, 
 
 * Two pods are running to serve dns requests.
-* It is controlled by a deployment named "coredns".
+* It controlled by a deployment named "coredns".
 * It is made available to the cluster through the service named "kube-dns".
 
 We will discuss deployment and service in the upcoming modules.
@@ -209,7 +218,7 @@ We will discuss deployment and service in the upcoming modules.
 {: style="text-align: justify;"}
 
 ### The Kubernetes Networking Model
-Kubernetes doesn't have its own networking model it uses third party implementation however, Kubernetes imposes the following fundamental requirements on any networking implementation (barring any intentional network segmentation policies):
+Kubernetes doesn't have its own networking model. It uses third party implementation. However, Kubernetes imposes the following fundamental requirements on any networking implementation (barring any intentional network segmentation policies):
 * Pods on a node can communicate with all pods on all nodes without NAT
 * Agents on a node (e.g. system daemons, kubelet) can communicate with all pods on that node
 {: style="text-align: justify;"}
@@ -219,7 +228,7 @@ Note: For those platforms that support Pods running in the host network (e.g. Li
 * Pods in the host network of a node can communicate with all pods on all nodes without NAT.
 {: style="text-align: justify;"}
 
-There are many varieties of network implementation for Kubernetes. [ Please refer this link for details](https://kubernetes.io/docs/concepts/cluster-administration/networking/)
+There are many varieties of network implementation for Kubernetes. [ Please refer to this link for details](https://kubernetes.io/docs/concepts/cluster-administration/networking/)
 
 Here we used ["weave-net"](https://www.weave.works/oss/net/).*We will go through the cluster to understand the implementation.*
 {: style="text-align: justify;"}
@@ -258,10 +267,10 @@ weave-net-slfx4                      2/2     Running   21         18d    192.168
 weave-net-t4g45                      2/2     Running   19         18d    192.168.50.13   node-3       <none>           <none>
 rajith@k8s-master:~$
 ```
-See the 6th and 7th column you can see the server IP address and the hostname respectively. It is implemented in master node + theree worker node one per each node.
+See the 6th and 7th column. You can see the server IP address and the hostname, respectively. It implemented in the master node + three worker node, one per node.
 {: style="text-align: justify;"}
 
-There are many addons available for Kubernetes, at this moment it is not required for us. Maybe we will cover it later. [ Or if you are interested to go through it please click here](https://kubernetes.io/docs/concepts/overview/components/#addons)
+There are many addons available for Kubernetes. At this moment, it is not needed for us. Maybe we will cover it later. [ Or if you are interested to go through it please click here](https://kubernetes.io/docs/concepts/overview/components/#addons)
 {: .notice--info}
 {: style="text-align: justify;"}
 
