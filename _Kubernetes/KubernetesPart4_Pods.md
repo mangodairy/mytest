@@ -56,10 +56,9 @@ This figure gives you an illustration of Multiple container Pod.
 {: style="text-align: justify;"}
 
 <figure>
-	<a href="https://d33wubrfki0l68.cloudfront.net/aecab1f649bc640ebef1f05581bfcc91a48038c4/728d6/images/docs/pod.svg"><img src="https://d33wubrfki0l68.cloudfront.net/aecab1f649bc640ebef1f05581bfcc91a48038c4/728d6/images/docs/pod.svg"></a>
-	<figcaption><a href="https://kubernetes.io/docs/concepts/overview/components/" title="Kubernetes Architecture, on kubernetes.io">Kubernetes Architecture, from kubernetes.io</a>.</figcaption>
+  <img src="/assets/images/kuberneties/Introduction/Pod/MultiContainerPod.png" alt="Image 1">
+  <figcaption>Multi Container Pod, from kubernetes.io </figcaption>
 </figure>
-
 
 ### Static Pod.
 
@@ -194,6 +193,8 @@ This time you can see the container creation was much faster. The reason behind 
 **We will have a detailed discussion of this in another series which is specifically talking about the PODs.**
 {: .notice--success}
 {: style="text-align: justify;"}
+
+[Our next module is on deployment, Click here][(https://rajith.in/Kubernetes/KubernetesPart5_Deployment-1/)
 
 <div markdown="0"><a href="#" class="btn btn--success">Go back to the Top of the page </a></div>
 

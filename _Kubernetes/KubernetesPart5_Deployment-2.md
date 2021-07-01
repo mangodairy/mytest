@@ -33,7 +33,7 @@ In the previous module, we saw how to create the deployment using a pod definiti
 The below command does the same action it performed in the previous module using the declarative method.
 {: style="text-align: justify;"}
 
-```yaml
+```markup
 kubectl create deployment nginx-deployment --image=nginx:1.14.2 --replicas=3
 ```
 * It creates a  'Deployment' named 'nginx-deployment'.
@@ -48,7 +48,7 @@ kubectl create deployment nginx-deployment --image=nginx:1.14.2 --replicas=3
 
 List the pods.
 
-```markup
+```markdown
 rajith@k8s-master:~$ kubectl get pods
 NAME                                READY   STATUS    RESTARTS   AGE
 nginx-deployment-66b6c48dd5-bkwj6   1/1     Running   1          10h
@@ -58,7 +58,7 @@ rajith@k8s-master:~$
 ```
 Check the deployment.
 
-```markup 
+```markdown 
 rajith@k8s-master:~$ kubectl get deployments
 NAME               READY   UP-TO-DATE   AVAILABLE   AGE
 nginx-deployment   3/3     3            3           10h
@@ -66,21 +66,21 @@ rajith@k8s-master:~$
 ```
 Delete the deployment.
 
-```markup 
+```markdown 
 rajith@k8s-master:~$ kubectl delete deployments  nginx-deployment
 deployment.apps "nginx-deployment" deleted
 rajith@k8s-master:~$ 
 ```
 Verify the status of the deployment.
 {: style="text-align: justify;"}
-```markup 
+```markdown 
 rajith@k8s-master:~$ kubectl get deployments
 No resources found in default namespace.
 rajith@k8s-master:~$ 
 ```
 The deployment got deleted, what about the pods associated with it? 
 {: style="text-align: justify;"}
-```markup 
+```markdown 
 rajith@k8s-master:~$ kubectl get pods
 No resources found in default namespace.
 rajith@k8s-master:~$ 

@@ -51,7 +51,7 @@ In the current setup, we have only one service that is the default service comin
 We will have a look at our service and deployment definition files.
 {: style="text-align: justify;"}
 
-```markdown
+```yaml
 rajith@k8s-master:~$ cat nginx-deployment.yaml 
 apiVersion: apps/v1
 kind: Deployment
@@ -83,7 +83,7 @@ We are already familiar with the deployment definition file. We used the same du
 
 Coming to the service defenition file.
 {: style="text-align: justify;"}
-```markdown
+```yaml
 rajith@k8s-master:~$ cat nginx-service.yaml 
 apiVersion: v1
 kind: Service
