@@ -458,7 +458,7 @@ We have a lot more to cover in deployment. We will cover those topics in another
 {: .notice--success}
 {: style="text-align: justify;"}
 
-[**In the next module, we will discuss the Kubernetes service. Click here to access **](https://rajith.in/Kubernetes/KubernetesPart6_service-1/)
+[In the next module, we will discuss the Kubernetes service. Click here to access ](https://rajith.in/Kubernetes/KubernetesPart6_service-1/)
 {: style="text-align: justify;"}
 
 {: style="text-align: justify;"}
