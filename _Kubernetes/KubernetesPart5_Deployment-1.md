@@ -335,10 +335,9 @@ We came lots of steps ahead of what we thought of discussing here. There are lot
 * Upgrade the application/container image version.
 * scale down the number of deployment to 3.
 * Destroy the deployment.
-
-[Next module, Deployment demo, click here](https://rajith.in/Kubernetes/KubernetesPart5_Deployment-2/)
-{: .notice--success}
 {: style="text-align: justify;"}
+[Next module, Deployment demo, click here](https://rajith.in/Kubernetes/KubernetesPart5_Deployment-2/)
+
 
 <div markdown="0"><a href="#" class="btn btn--success">Go back to the Top of the page </a></div>
 
