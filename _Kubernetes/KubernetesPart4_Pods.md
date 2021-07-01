@@ -194,7 +194,7 @@ This time you can see the container creation was much faster. The reason behind 
 {: .notice--success}
 {: style="text-align: justify;"}
 
-[Our next module is on deployment, Click here][(https://rajith.in/Kubernetes/KubernetesPart5_Deployment-1/)
+[Our next module is on deployment, Click here](https://rajith.in/Kubernetes/KubernetesPart5_Deployment-1/)
 
 <div markdown="0"><a href="#" class="btn btn--success">Go back to the Top of the page </a></div>
 
