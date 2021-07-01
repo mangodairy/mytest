@@ -161,6 +161,8 @@ rajith@k8s-master:~$
 * Verify the details of the service and the nginx deployment.
 * Delete the service and try accessing Nginx.
 * Destroy the deployment.
+
+[Next module, Service demo, click here](https://rajith.in/Kubernetes/KubernetesPart6_service-2/)
 {: .notice--success}
 {: style="text-align: justify;"}
 

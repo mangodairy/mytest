@@ -386,6 +386,8 @@ rajith@k8s-master:~$
 ```
 
 **Now we got a clear idea of how the Kubernetes service works and how it's related to the other components in the cluster.**
+
+[Next, we will have a discussion on Kubernetes volume and persistent volume.](https://rajith.in/Kubernetes/KubernetesPart7_PersistentVolume/)
 {: .notice--success}
 {: style="text-align: justify;"}
 <div markdown="0"><a href="#" class="btn btn--success">Go back to the Top of the page </a></div>

@@ -120,7 +120,7 @@ This figure gives you an illustration of Kubernetes architecture. It shows how a
 I will add the demo in another page and provide the link here . I am also planning a video  for the same but it will take some time .
 
 
-
+[Our next module,Kubernetes Architecture Control Plane Components,click here](https://rajith.in/Kubernetes/KubernetesPart2/)
 
 <div markdown="0"><a href="#" class="btn btn--success">Go back to the Top of the page </a></div>
 
