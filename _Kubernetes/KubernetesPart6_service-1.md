@@ -34,10 +34,10 @@ It allows exposing the application running on a pod/deployment to,
 ## Pictorial representation of a service 
 
 <figure>
-	<a href="https://d33wubrfki0l68.cloudfront.net/e351b830334b8622a700a8da6568cb081c464a9b/13020/images/docs/services-userspace-overview.svg"><img src="https://d33wubrfki0l68.cloudfront.net/e351b830334b8622a700a8da6568cb081c464a9b/13020/images/docs/services-userspace-overview.svg"></a>
-	<figcaption><a href="https://kubernetes.io/docs/concepts/services-networking/service/" title="Pictorial representation of a service 
-, on kubernetes.io">Pictorial representation of a service (iptables proxy mode), from kubernetes.io</a>.</figcaption>
+  <img src="/assets/images/kuberneties/Introduction/Pod/PictorialrepresentationService.png" alt="Image 1">
+  <figcaption>Pictorial representation of a service (iptables proxy mode), from kubernetes.io </figcaption>
 </figure>
+
 ## Service types
 
 * ClusterIP (default type)
