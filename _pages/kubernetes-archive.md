@@ -97,7 +97,7 @@ feature_row2:
 # Kubernetes learning series.
 
 1. [ Kubernetes in 7 days? In a week !!](https://rajith.in/Kubernetes/#kubernetes-in-7-days-in-a-week-) This is the introductory series of Kubernetes. Here we have 7 modules along with the demo. In this, we are going through the Kubernetes architecture, pods, deployment, service, volumes, along with the details of corresponding definition files.  
-2. [Walking through the pods. ](https://rajith.in/Kubernetes/#walking-through-the-pods--%EF%B8%8F) Here we are going through the details of pods. Verifying details of the pod, analyzing the pod, connecting to the running containers and many more.
+2. [Walking through the pods. ](https://mangodairy.github.io/devsite/Kubernetes/#walking-through-the-pods--) Here we are going through the details of pods. Verifying details of the pod, analyzing the pod, connecting to the running containers and many more.
 3. [Play with Deployments](Coming soon!) Coming soon!
 4. [ Journey towards CKAD.](Coming soon!) Coming soon!
 ## Kubernetes in 7 days? In a week !!!
