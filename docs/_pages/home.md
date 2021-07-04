@@ -13,11 +13,11 @@ excerpt: >
   Hello! I am Rajith<br />
   <small>This is a place for people who love to enhance their technical knowledge.Feel free to go through the pages. </small>
 feature_row:
-  - image_path: /assets/images/mm-customizable-feature.png
+  - image_path: /assets/images/kuberneties/Day1.png
     alt: "customizable"
-    title: "Super customizable"
-    excerpt: "Everything from the menus, sidebars, comments, and more can be configured or set with YAML Front Matter."
-    url: "/docs/configuration/"
+    title: "Kubernetes in 7 days? In a week !!!"
+    excerpt: "This is the introductory series of Kubernetes. Here we have 7 modules along with the demo. In this, we are going through the Kubernetes architecture, pods, deployment, service, volumes, along with the details of corresponding definition files."
+    url: "https://rajith.in/Kubernetes/#kubernetes-in-7-days-in-a-week-"
     btn_class: "btn--primary"
     btn_label: "Learn more"
   - image_path: /assets/images/mm-responsive-feature.png
