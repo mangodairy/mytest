@@ -22,9 +22,9 @@ feature_row:
     btn_label: "Learn more"
   - image_path: /assets/images/mm-responsive-feature.png
     alt: "fully responsive"
-    title: "Responsive layouts"
-    excerpt: "Built with HTML5 + CSS3. All layouts are fully responsive with helpers to augment your content."
-    url: "/docs/layouts/"
+    title: "Walking through the pods."
+    excerpt: "Here we are going through the details of pods. Analyzing the pod, connecting to the running containers and many more."
+    url: "https://mangodairy.github.io/devsite/Kubernetes/#walking-through-the-pods--"
     btn_class: "btn--primary"
     btn_label: "Learn more"
   - image_path: /assets/images/mm-free-feature.png
