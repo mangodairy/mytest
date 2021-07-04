@@ -8,8 +8,6 @@ header:
   overlay_image: /assets/images/unsplash-image-1.jpg
 excerpt: "Here you will find different series which cover the basic, intermediate and advanced discussion series of Kubernetes technology. I also try to cover a few exam preparation steps in one of the series. "
 collection: Kubernetes learning series. 
-entries_layout: grid
-classes: wide
 
 feature_row:
   - image_path: /assets/images/kuberneties/Day1.png
@@ -108,6 +106,7 @@ Kubernetes in 7 days( Seven modules, **if you do not have time in your day to da
 So what are you waiting for? 10 minutes in a day is just the time you normally take for going through some post in your favourite whatsup group.
 {: .notice--info}
 {: style="text-align: justify;"}
+
 
 {% include advertising.html %}
 
