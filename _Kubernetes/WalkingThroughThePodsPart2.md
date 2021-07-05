@@ -30,6 +30,7 @@ It covered in the previous series. We will look into it from a different angle. 
 If you do not have any previous experience on the pod, have a look at the previous series[Kubernetes in 7 days? In a week !!!](https://www.rajith.in/Kubernetes/#kubernetes-learning-series) and come back here.[Click here](https://www.rajith.in/Kubernetes/KubernetesPart4_Pods/#creating-a-pod)
 {: style="text-align: justify;"}
 
+
 ```yaml
 rajith@k8s-master:~$ vi my-first-pod.yaml 
 rajith@k8s-master:~$ cat my-first-pod.yaml 
